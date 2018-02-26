@@ -17,20 +17,15 @@ void LaunchTask2()
 int Menu2()
 {
 	int key;
-	int a = 0;
-	int b = 0;
-	int c = 0;
 	double x1;
 	double x2;
 	int value1 = 0;
 	int value2 = 0;
 	double z = 0;
-	double* x1Pointer = &x1;
-	double* x2Pointer = &x2;
-	double& x1Reference = x1;
-	double& x2Reference = x2;
+
+
 	int check;
-	char operationKey;
+
 
 	do
 	{
@@ -59,6 +54,8 @@ int Menu2()
 			break;
 
 		case 2:
+			{
+			char operationKey;
 			cout << "Enter mathematic operation (+, -, *, /, %): ";
 			operationKey = getchar();
 			while ((operationKey != '+') && (operationKey != '-') && (operationKey != '*') && (operationKey != '/') && (operationKey != '%'))
@@ -70,66 +67,49 @@ int Menu2()
 			z = MakeCalculation(value1, value2, operationKey);
 			cout << value1 << " " << operationKey << " " << value2 << " = " << z << ".\n";
 			break;
+			}
 
 		case 3:
-			cout << "Enter the coefficients: ax^2 + bx + c " << endl;
-			cout << "Enter coefficient a: " << endl;
-			cin >> a;
-			cout << "Enter coefficient b: " << endl;
-			cin >> b;
-			cout << "Enter coefficient c: " << endl;
-			cin >> c;
+		{
 			x1 = 0;
 			x2 = 0;
-			check = GetRoots(a, b, c, x1Pointer, x2Pointer);
-			if (check == 0)
-			{
-				cout << "Have no roots" << endl;
-			}
-			if (check == 1)
-			{
-				cout << "Real roots: x1 = x2: " << x1 << endl;
-			}
-			if (check == 2)
-			{
-				cout << "Real roots: x1: " << x1 << " x2: " << x2 << endl;
-			}
-			if (check == -1)
-			{
-				cout << "Complex roots: x1 = " << x1 << " + " << x2 << "i" << endl;
-				cout << "x2 = " << x1 << "-" << x2 << "i" << endl;
-			}
+			double* x1Pointer = &x1;
+			double* x2Pointer = &x2;
+			check = GetRoots(1, 3, 2, x1Pointer, x2Pointer);
+			DisplayRootsValues(check, x1Pointer, x2Pointer);
+			check = GetRoots(1, 4, 0, x1Pointer, x2Pointer);
+			DisplayRootsValues(check, x1Pointer, x2Pointer);
+			check = GetRoots(0, 1, 2, x1Pointer, x2Pointer);
+			DisplayRootsValues(check, x1Pointer, x2Pointer);
+			check = GetRoots(0, 0, 3, x1Pointer, x2Pointer);
+			DisplayRootsValues(check, x1Pointer, x2Pointer);
+			check = GetRoots(0, 1, 0, x1Pointer, x2Pointer);
+			DisplayRootsValues(check, x1Pointer, x2Pointer);
+			check = GetRoots(4, 1, 4, x1Pointer, x2Pointer);
+			DisplayRootsValues(check, x1Pointer, x2Pointer);
 			break;
+		}
 
 		case 4:
-			cout << "Enter the coefficients: ax^2 + bx + c " << endl;
-			cout << "Enter coefficient a: " << endl;
-			cin >> a;
-			cout << "Enter coefficient b: " << endl;
-			cin >> b;
-			cout << "Enter coefficient c: " << endl;
-			cin >> c;
+		{
 			x1 = 0;
 			x2 = 0;
-			check = AnotherGetRoots(a, b, c, x1Reference, x2Reference);
-			if (check == 0)
-			{
-				cout << "Have no roots" << endl;
-			}
-			if (check == 1)
-			{
-				cout << "Real roots: x1 = x2: " << x1 << endl;
-			}
-			if (check == 2)
-			{
-				cout << "Real roots: x1: " << x1 << " x2: " << x2 << endl;
-			}
-			if (check == -1)
-			{
-				cout << "Complex roots: x1 = " << x1 << " + " << x2 << "i" << endl;
-				cout << "x2 = " << x1 << "-" << x2 << "i" << endl;
-			}
+			double& x1Reference = x1;
+			double& x2Reference = x2;
+			check = AnotherGetRoots(1, 3, 2, x1Reference, x2Reference);
+			AnotherDisplayRootsValues(check, x1Reference, x2Reference);
+			check = AnotherGetRoots(1, 4, 0, x1Reference, x2Reference);
+			AnotherDisplayRootsValues(check, x1Reference, x2Reference);
+			check = AnotherGetRoots(0, 1, 2, x1Reference, x2Reference);
+			AnotherDisplayRootsValues(check, x1Reference, x2Reference);
+			check = AnotherGetRoots(0, 0, 3, x1Reference, x2Reference);
+			AnotherDisplayRootsValues(check, x1Reference, x2Reference);
+			check = AnotherGetRoots(0, 1, 0, x1Reference, x2Reference);
+			AnotherDisplayRootsValues(check, x1Reference, x2Reference);
+			check = AnotherGetRoots(4, 1, 4, x1Reference, x2Reference);
+			AnotherDisplayRootsValues(check, x1Reference, x2Reference);
 			break;
+		}
 
 		case '5':
 

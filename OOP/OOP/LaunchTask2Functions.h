@@ -8,11 +8,13 @@ using namespace std;
 
 int globalVariable = 7;
 
+
 //Реализация функции, выводящей на экран текст.
 void PrintHelloWorld()
 {
 	cout << "Hello, world!" << endl;
 }
+
 
 //Калькулятор
 double MakeCalculation(int value1, int value2, char operationKey)
@@ -25,10 +27,34 @@ double MakeCalculation(int value1, int value2, char operationKey)
 	return z;
 }
 
+
+//Ввод данных для функций поиска корней квадратного уравнения
+void DisplayRootsValues(int check, double* x1, double* x2)
+{
+	if (check == 0)
+	{
+		cout << "Have no roots" << endl << endl;
+	}
+	if (check == 1)
+	{
+		cout << "Real roots: x1 = x2: " << *x1 << endl << endl;
+	}
+	if (check == 2)
+	{
+		cout << "Real roots: "<< endl << "x1: " << *x1 << endl << "x2: " << *x2 << endl << endl;
+	}
+	if (check == -1)
+	{
+		cout << "Complex roots: "<< endl <<"x1 = " << *x1 << " + " << *x2 << "i" << endl;
+		cout << "x2 = " << *x1 << " - " << *x2 << "i" << endl << endl;
+	}
+}
+
+
 //Корни квадратного уравнения
 int GetRoots(int a, int b, int c, double* x1, double* x2)
 {
-
+	cout << "Quadratic equation: " << a << " * x^2 + " << b << " x + " << c << " = 0 " << endl;
 	double discriminant;
 	if (a != 0) 
 	{
@@ -58,10 +84,35 @@ int GetRoots(int a, int b, int c, double* x1, double* x2)
 	return 0;
 }
 
+
+//Ввод данных для функций поиска корней квадратного 
+//уравнения с использованием ссылок
+void AnotherDisplayRootsValues(int check, double& x1, double& x2)
+{
+	if (check == 0)
+	{
+		cout << "Have no roots" << endl << endl;
+	}
+	if (check == 1)
+	{
+		cout << "Real roots: x1 = x2 = " << x1 << endl << endl;
+	}
+	if (check == 2)
+	{
+		cout << "Real roots:" << endl <<"x1 = " << x1 << endl <<"x2: " << x2 << endl << endl;
+	}
+	if (check == -1)
+	{
+		cout << "Complex roots:" << endl << "x1 = " << x1 << " + " << x2 << "i" << endl;
+		cout << "x2 = " << x1 << " - " << x2 << "i" << endl << endl;
+	}
+}
+
+
 //Корень квадратного уравнения (с использованием ссылок)
 int AnotherGetRoots(int a, int b, int c, double& x1, double& x2)
 {
-	
+	cout << "Quadratic equation: " << a << " * x^2 + " << b << " x + " << c << " = 0 " << endl;
 	double discriminant;
 	if (a != 0)
 	{
@@ -91,17 +142,20 @@ int AnotherGetRoots(int a, int b, int c, double& x1, double& x2)
 	return 0;
 }
 
+
 //Рассчитать сумму двух целочисленных переменных (перегрузка функций)
 void SummNumbers(int value1, int value2)
 {
 	printf("Summ of integer is %d\n", value1 + value2);
 }
 
+
 //Рассчитать сумму двух целочисленных переменных
 void SummNumbers(double value1, double value2)
 {
 	printf("Summ of double is %f\n", value1 + value2);
 }
+
 
 //Рассчитать сумму двух целочисленных переменных
 void SummNumbers(int value1, double value2)
