@@ -7,14 +7,13 @@ using namespace std;
 //Μενώ
 int Menu()
 {
-	char key;
-	int element;
-	int index;
+	int key;
 
 	do
 	{
 		cout << "\t Choose laboratory work:" << endl << endl
 			<< "1. Task 1;" << endl
+			<< "2. Task 2;" << endl
 			<< "0. Exit." << endl;
 
 		cin >> key;
@@ -22,13 +21,17 @@ int Menu()
 		system("cls");
 		switch (key)
 		{
-		case '1':
+		case 1:
 
 			LaunchTask1();
 			break;
 
-		case '0':
+		case 2:
 
+			LaunchTask2();
+			break;
+
+		case 0:
 			cout << " Welcome back." << endl;
 			break;
 
@@ -36,10 +39,9 @@ int Menu()
 			cout << " Mistake. Try again." << endl;
 			break;
 		}
-	} while (key != '0');
+	} while (key != 0);
 
-	int k = atoi(&key);
-	return(k);
+	return(key);
 
 };
 
