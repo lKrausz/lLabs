@@ -7,9 +7,7 @@ using namespace std;
 //Ìåíþ
 int Menu1()
 {
-	char key;
-	int element;
-	int index;
+	int key;
 
 	do
 	{
@@ -20,94 +18,94 @@ int Menu1()
 			<< "4. a+b(enter it using the keyboard);" << endl
 			<< "5. Pointer;" << endl
 			<< "6. Even or Odd;" << endl
-			<< "7. multiplicity of number (5 and 2);" << endl
+			<< "7. Multiplicity of number (5 and 2);" << endl
 			<< "8. PredCondition;" << endl
 			<< "9. PostCondition;" << endl
-			<< "A. Iteration;" << endl
-			<< "B. Break;" << endl
-			<< "C. Float <--> Int;" << endl
+			<< "10. Iteration;" << endl
+			<< "11. Break;" << endl
+			<< "12. Float <--> Int;" << endl << endl
 			<< "0. Exit." << endl;
 
 		cin >> key;
-		cin.ignore(1);
+		cin.ignore();
 		system("cls");
 		switch (key)
 		{
-		case '1':
+		case 1:
 
 			Hi();
 			break;
 
-		case '2':
+		case 2:
 
 			Summ();
 			break;
 
-		case '3':
+		case 3:
 
 			Division();
 			break;
 
-		case '4':
+		case 4:
 
 			Summ2();
 			break;
 
-		case '5':
+		case 5:
 			Pointer();
 			break;
 
-		case '6':
+		case 6:
 
 			EvenOdd();
 			break;
 
-		case '7':
+		case 7:
 
 			Multiples();
 			break;
 
-		case '8':
+		case 8:
 
-			PredÑondition();
+			PredCondition();
 			break;
 
-		case '9':
+		case 9:
 
-			PostÑondition();
+			PostCondition();
 			break;
 
-		case 'A':
+		case 10:
 
 			Iteration();
 			break;
 
-		case 'B':
+		case 11:
 
 			Break();
 			break;
 
-		case 'C':
+		case 12:
 
 			Float();
 			break;
 
-		case '0':
+		case 0:
 			cout << " Welcome back." << endl;
 			break;
 		default:
 			cout << " Mistake. Try again." << endl;
 			break;
 		}
-	} while (key != '0');
+	} while (key != 0);
 
-	int k = atoi(&key);
-	return(k);
+	return(key);
 
 };
 
 void LaunchTask1()
 {
+
 	int key = Menu1();
 	cout << key << endl;
 }
