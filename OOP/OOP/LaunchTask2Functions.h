@@ -21,10 +21,10 @@ void PrintHelloWorld()
 double MakeCalculation(int value1, int value2, char operationKey)
 {
 	double z;	if (operationKey == '+') z = value1 + value2; else
-	if (operationKey == '-') z = value1 - value2; else
-	if (operationKey == '*') z = value1 * value2; else
-	if (operationKey == '/') z = value1 / value2; else
-	if (operationKey == '%') z = value1 % value2;
+		if (operationKey == '-') z = value1 - value2; else
+			if (operationKey == '*') z = value1 * value2; else
+				if (operationKey == '/') z = value1 / value2; else
+					z = value1 % value2;
 	return z;
 }
 
@@ -138,14 +138,19 @@ void SummNumbers(int value1, double value2)
 
 
 //Задание на использование глобальных переменных
+//Глобальная переменная + 2
 void GlobalPlusTwo()
 {
 	globalVariable += 2;
 }
+
+//Глобальная переменная * 3
 void GlobalMultiplyThree()
 {
 	globalVariable *= 3;
 }
+
+//Присваивание глобальной переменной значения 1
 void GlobalEqualsOne()
 {
 	globalVariable = 1;
@@ -173,7 +178,6 @@ int Game()
 	srand(time(NULL)); // для задания случайного начального числа
 	cout << "---Game: Guess the Number---" << endl;
 	int guessNumber = rand() % 10; // генерация угадываемого числа
-	cout << guessNumber << endl;
 	int enteredNumber = -1; // вводимое пользователем число
 	int shots = 1; // количество попыток
 	cout << "Enter number from 0 to 9: ";
@@ -210,9 +214,12 @@ int Game()
 void BubbleSort(double *arrPointer, int n)
 {
 	double tmp = 0;
-	for (int i = 0; i<n; i++) {
-		for (int j = (n - 1); j >= (i + 1); j--) {
-			if (arrPointer[j]<arrPointer[j - 1]) {
+	for (int i = 0; i<n; i++) 
+	{
+		for (int j = (n - 1); j >= (i + 1); j--) 
+		{
+			if (arrPointer[j]<arrPointer[j - 1]) 
+			{
 				tmp = arrPointer[j];
 				arrPointer[j] = arrPointer[j - 1];
 				arrPointer[j - 1] = tmp;
@@ -265,10 +272,13 @@ void SelectionSort(double array[], int lenD)
 {
 	int j = 0;
 	int tmp = 0;
-	for (int i = 0; i<lenD; i++) {
+	for (int i = 0; i<lenD; i++) 
+	{
 		j = i;
-		for (int k = i; k<lenD; k++) {
-			if (array[j]>array[k]) {
+		for (int k = i; k<lenD; k++) 
+		{
+			if (array[j]>array[k]) 
+			{
 				j = k;
 			}
 		}

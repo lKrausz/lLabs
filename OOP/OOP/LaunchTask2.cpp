@@ -159,7 +159,6 @@ int Menu2()
 		case 9:
 		{
 			int n;
-			int sortKey;
 			cout << "Enter the size of the array:" << endl;
 			cin >> n;
 			double* array = new double[n];
@@ -174,6 +173,7 @@ int Menu2()
 			<< "1- Bubble Sort;" << endl 
 			<< "2- Quick Sort;" << endl 
 			<< "3- Selection Sort" << endl;
+			int sortKey;
 			cin >> sortKey;
 			if (sortKey == 1)
 			{
@@ -245,14 +245,21 @@ int Menu2()
 				}
 				cout << endl;
 			}
+			//Освобождение памяти
 			for (int i = 0; i < n; i++)
-			delete[] aMatrix[i];
+			{
+				delete[] aMatrix[i];
+			}
 			delete[] aMatrix;
 			for (int i = 0; i < z; i++)
-			delete[] bMatrix[i];
+			{
+				delete[] bMatrix[i];
+			}
 			delete[] bMatrix;
 			for (int i = 0; i < n; i++)
-			delete[] result[i];
+			{
+				delete[] result[i];
+			}
 			delete[] result;
 			}
 			break;
