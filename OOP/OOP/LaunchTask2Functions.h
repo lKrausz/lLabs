@@ -21,10 +21,10 @@ void PrintHelloWorld()
 double MakeCalculation(int value1, int value2, char operationKey)
 {
 	double z;	if (operationKey == '+') z = value1 + value2; else
-		if (operationKey == '-') z = value1 - value2; else
-			if (operationKey == '*') z = value1 * value2; else
-				if (operationKey == '/') z = value1 / value2; else
-					z = value1 % value2;
+	if (operationKey == '-') z = value1 - value2; else
+	if (operationKey == '*') z = value1 * value2; else
+	if (operationKey == '/') z = value1 / value2; else
+	if (operationKey == '%') z = value1 % value2;
 	return z;
 }
 
@@ -239,13 +239,17 @@ void QuickSort(double* array, int const n)
 		double* L = new double[lenD];
 		double* R = new double[lenD];
 		pivot = array[ind];
-		for (i = 0; i<lenD; i++) {
-			if (i != ind) {
-				if (array[i]<pivot) {
+		for (i = 0; i<lenD; i++) 
+		{
+			if (i != ind) 
+			{
+				if (array[i]<pivot) 
+				{
 					L[j] = array[i];
 					j++;
 				}
-				else {
+				else 
+				{
 					R[k] = array[i];
 					k++;
 				}
@@ -253,14 +257,18 @@ void QuickSort(double* array, int const n)
 		}
 		QuickSort(L, j);
 		QuickSort(R, k);
-		for (int cnt = 0; cnt<lenD; cnt++) {
-			if (cnt<j) {
+		for (int cnt = 0; cnt<lenD; cnt++) 
+		{
+			if (cnt<j) 
+			{
 				array[cnt] = L[cnt];;
 			}
-			else if (cnt == j) {
+			else if (cnt == j) 
+			{
 				array[cnt] = pivot;
 			}
-			else {
+			else 
+			{
 				array[cnt] = R[cnt - (j + 1)];
 			}
 		}
@@ -318,13 +326,13 @@ int** MatrixValues(int row, int col, int **matrix)
 }
 
 //Перемножение матриц разного размера
-int** MultiplyMatrix(int n, int w, int m, int** aMatrix, int** bMatrix, int** result)
+int** MultiplyMatrix(int ab, int bCol, int aCol, int** aMatrix, int** bMatrix, int** result)
 {
 	int temp;
-	for (int row = 0; row < n; row++) {
-		for (int col = 0; col < w; col++) 
+	for (int row = 0; row < ab; row++) {
+		for (int col = 0; col < bCol; col++) 
 		{
-			for (int inner = 0; inner < m; inner++) 
+			for (int inner = 0; inner < aCol; inner++) 
 			{
 				temp = aMatrix[row][inner] * bMatrix[inner][col];
 				result[row][col] = result[row][col] + temp;

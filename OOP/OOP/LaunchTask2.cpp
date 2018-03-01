@@ -54,7 +54,8 @@ int Menu2()
 			char operationKey;
 			cout << "Enter mathematic operation (+, -, *, /, %): ";
 			operationKey = getchar();
-			while ((operationKey != '+') && (operationKey != '-') && (operationKey != '*') && (operationKey != '/') && (operationKey != '%'))
+			while ((operationKey != '+') && (operationKey != '-') && (operationKey != '*') 
+				&& (operationKey != '/') && (operationKey != '%'))
 			{
 				cout << "INCORRECT SYMBOL!!! Please, enter (+, -, *, /, %):" << endl;
 				operationKey = getchar();
@@ -69,8 +70,6 @@ int Menu2()
 		{
 			double x1 = 0;
 			double x2 = 0;
-			double x3 = 0;
-			double x4 = 0;
 			double* x1Pointer = &x1;
 			double* x2Pointer = &x2;
 			check = GetRoots(1, 3, 2, x1Pointer, x2Pointer);
@@ -140,13 +139,13 @@ int Menu2()
 
 		case 7:
 			{
-			int n;
-			int m;
+			int base;
+			int power;
 			cout << "Enter the base: " << endl;
-			cin >> n;
+			cin >> base;
 			cout << "Enter the power: " << endl;
-			cin >> m;
-			cout << n << " in power " << m << " = " << GetPower(n, m) << endl;
+			cin >> power;
+			cout << base << " in power " << power << " = " << GetPower(base, power) << endl;
 			}
 			break;
 
@@ -202,51 +201,51 @@ int Menu2()
 		case 10:
 			{
 			//Инициализация матрицы А
-			int n;
-			int m;
+			int ab; //Кол-во строк в матрице а и столбцов в матрице b
+			int aCol; //Кол-во столбцов в матрице а
 			cout << "Enter the number of rows of matrix A" << endl;
-			cin >> n;
+			cin >> ab;
 			cout << "Enter the number of columns of matrix A" << endl;
-			cin >> m;
+			cin >> aCol;
 			srand(time(NULL));
-			int **aMatrix = new int*[n];
+			int **aMatrix = new int*[ab];
 			cout << "The array A is" << endl;
-			aMatrix = MatrixValues(n, m, aMatrix);
+			aMatrix = MatrixValues(ab, aCol, aMatrix);
 			//Инициализация матрицы В
-			int w;
-			cout << "The number of rows of matrix B equal the number of columns of matrix A: " << m << endl;
+			int bCol; //Кол-во столбцов в матрице b
+			cout << "The number of rows of matrix B equal the number of columns of matrix A: " << ab << endl;
 			cout << "Enter the number of columns of matrix B" << endl;
-			cin >> w;
-			int **bMatrix = new int*[m];
+			cin >> bCol;
+			int **bMatrix = new int*[aCol];
 			cout << "The array B is" << endl;
-			bMatrix = MatrixValues(m, w, bMatrix);
+			bMatrix = MatrixValues(aCol, bCol, bMatrix);
 			//Инициализация матрицы результата
-			int** result = new int*[n];
-			for (int i = 0; i < n; i++)
+			int** result = new int*[ab];
+			for (int i = 0; i < ab; i++)
 			{
-				result[i] = new int[w];
+				result[i] = new int[bCol];
 			}
-			for (int i = 0; i< n; i++)
+			for (int i = 0; i< ab; i++)
 			{
-				for (int j = 0; j < w; j++)
+				for (int j = 0; j < bCol; j++)
 				{
 					result[i][j] = 0;
 				}
 				cout << endl;
 			}
 			//Умножение матриц и вывод резульатата на экран
-			result = MultiplyMatrix(n, w, m, aMatrix, bMatrix, result);
+			result = MultiplyMatrix(ab, bCol, aCol, aMatrix, bMatrix, result);
 			cout << "Results: " << endl;
-			for (int i = 0; i< n; i++)
+			for (int i = 0; i< ab; i++)
 			{
-				for (int j = 0; j < w; j++)
+				for (int j = 0; j < bCol; j++)
 				{
 					cout << result[i][j] << ' ';
 				}
 				cout << endl;
 			}
 			//Освобождение памяти
-			for (int i = 0; i < n; i++)
+			for (int i = 0; i < ab; i++)
 			{
 				delete[] aMatrix[i];
 			}
@@ -256,7 +255,7 @@ int Menu2()
 				delete[] bMatrix[i];
 			}
 			delete[] bMatrix;
-			for (int i = 0; i < n; i++)
+			for (int i = 0; i < ab; i++)
 			{
 				delete[] result[i];
 			}
