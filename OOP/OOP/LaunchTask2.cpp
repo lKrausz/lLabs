@@ -1,8 +1,11 @@
 #include <iostream>
 #include "LaunchTask2Functions.h"
 #include "Labs.h"
+#include <ctime>
 
 using namespace std;
+
+extern int globalVariable;
 
 //Прототип функции
 int Menu2();
@@ -44,11 +47,13 @@ int Menu2()
 		switch (key)
 		{
 		case 1:
+		{
 			PrintHelloWorld();
-			break;
+			}
+		break;
 
 		case 2:
-			{
+		{
 			int value1 = 0;
 			int value2 = 0;
 			char operationKey;
@@ -63,8 +68,8 @@ int Menu2()
 			}
 			z = MakeCalculation(value1, value2, operationKey);
 			cout << value1 << " " << operationKey << " " << value2 << " = " << z << ".\n";
-			break;
 			}
+		break;
 
 		case 3:
 		{
@@ -84,8 +89,8 @@ int Menu2()
 			DisplayRootsValues(check, *x1Pointer, *x2Pointer);
 			check = GetRoots(4, 1, 4, x1Pointer, x2Pointer);
 			DisplayRootsValues(check, *x1Pointer, *x2Pointer);
-			break;
 		}
+		break;
 
 		case 4:
 		{
@@ -105,11 +110,11 @@ int Menu2()
 			DisplayRootsValues(check, x1, x2);
 			check = AnotherGetRoots(4, 1, 4, x1Reference, x2Reference);
 			DisplayRootsValues(check, x1, x2);
-			break;
 		}
+		break;
 
 		case 5:
-			{
+		{
 			int a = 1;
 			int b = 2;
 			SummNumbers(a, b);
@@ -121,10 +126,10 @@ int Menu2()
 			float n = 6.0;
 			SummNumbers(m, n);
 			}
-			break;
+		break;
 
 		case 6:
-			{
+		{
 			cout << "Global Variable: "<< globalVariable << endl;
 			GlobalPlusTwo();
 			cout << "Global Variable + 2: " << globalVariable << endl;
@@ -135,10 +140,10 @@ int Menu2()
 			globalVariable = 5;
 			cout << "New global Variable: " << globalVariable << endl;
 			}
-			break;
+		break;
 
 		case 7:
-			{
+		{
 			int base;
 			int power;
 			cout << "Enter the base: " << endl;
@@ -147,23 +152,23 @@ int Menu2()
 			cin >> power;
 			cout << base << " in power " << power << " = " << GetPower(base, power) << endl;
 			}
-			break;
+		break;
 
 		case 8:
-			{
-			Game();
+		{
+			GuessRandomValueGame();
 			}
-			break;
+		break;
 
 		case 9:
 		{
-			int n;
+			int size;
 			cout << "Enter the size of the array:" << endl;
-			cin >> n;
-			double* array = new double[n];
+			cin >> size;
+			double* array = new double[size];
 			srand(time(NULL));
 			cout << "Your array: " << endl;
-			for (int i = 0; i < n; i++) 
+			for (int i = 0; i <  size; i++)
 			{
 				array[i] = rand() % 100;
 				cout << array[i] << " ";
@@ -178,54 +183,66 @@ int Menu2()
 			{
 				cout << "BubbleSort results: " << endl;
 				double *arrPointer = array;
-				BubbleSort(arrPointer, n);
-				ArrayShow(array, n);
+				BubbleSort(arrPointer, size);
+				ShowArray(array, size);
 			}
 			if (sortKey == 2)
 			{
 				cout << "QuickSort results: " << endl;
-				QuickSort(array, n);
-				ArrayShow(array, n);
+				QuickSort(array, size);
+				ShowArray(array, size);
 			}
 			if (sortKey == 3)
 			{
 				cout << "SelectionSort results: " << endl;
-				SelectionSort(array, n);
-				ArrayShow(array, n);
+				SelectionSort(array, size);
+				ShowArray(array, size);
 			}
 
 			delete[] array;
 		}
-			break;
+		break;
 
 		case 10:
-			{
+		{
 			//Инициализация матрицы А
-			int ab; //Кол-во строк в матрице а и столбцов в матрице b
+			int aRow; //Кол-во строк в матрице а 
 			int aCol; //Кол-во столбцов в матрице а
 			cout << "Enter the number of rows of matrix A" << endl;
-			cin >> ab;
+			cin >> aRow;
 			cout << "Enter the number of columns of matrix A" << endl;
 			cin >> aCol;
 			srand(time(NULL));
-			int **aMatrix = new int*[ab];
+			int **aMatrix = new int*[aRow];
 			cout << "The array A is" << endl;
-			aMatrix = MatrixValues(ab, aCol, aMatrix);
+			aMatrix = MatrixValues(aRow, aCol, aMatrix);
+			ShowMatrix(aRow, aCol, aMatrix);
+
 			//Инициализация матрицы В
+			int bRow; //Кол-во строк в матрице b
 			int bCol; //Кол-во столбцов в матрице b
-			cout << "The number of rows of matrix B equal the number of columns of matrix A: " << ab << endl;
-			cout << "Enter the number of columns of matrix B" << endl;
+			cout << "Enter the number of rows of matrix B" << endl;
+			cin >> bRow;
+			while (aCol != bRow)
+			{
+				cout << "Error. Enter correct value. " << endl
+					<< "Rows of matrix A and columns of matrix B must be equals" << endl;
+				cin >> bRow;
+			}
+			cout << "Enter the number of columns of matrix A" << endl;
 			cin >> bCol;
-			int **bMatrix = new int*[aCol];
+			int **bMatrix = new int*[bRow];
 			cout << "The array B is" << endl;
-			bMatrix = MatrixValues(aCol, bCol, bMatrix);
+			bMatrix = MatrixValues(bRow, bCol, bMatrix);
+			ShowMatrix(bRow, bCol, bMatrix);
+
 			//Инициализация матрицы результата
-			int** result = new int*[ab];
-			for (int i = 0; i < ab; i++)
+			int** result = new int* [aRow];
+			for (int i = 0; i < aRow; i++)
 			{
 				result[i] = new int[bCol];
 			}
-			for (int i = 0; i< ab; i++)
+			for (int i = 0; i< aRow; i++)
 			{
 				for (int j = 0; j < bCol; j++)
 				{
@@ -234,34 +251,27 @@ int Menu2()
 				cout << endl;
 			}
 			//Умножение матриц и вывод резульатата на экран
-			result = MultiplyMatrix(ab, bCol, aCol, aMatrix, bMatrix, result);
+			result = MultiplyMatrix(aRow, bCol, aCol, aMatrix, bMatrix, result);
 			cout << "Results: " << endl;
-			for (int i = 0; i< ab; i++)
-			{
-				for (int j = 0; j < bCol; j++)
-				{
-					cout << result[i][j] << ' ';
-				}
-				cout << endl;
-			}
+			ShowMatrix(aRow, bCol, result);
 			//Освобождение памяти
-			for (int i = 0; i < ab; i++)
+			for (int i = 0; i < aRow; i++)
 			{
 				delete[] aMatrix[i];
 			}
 			delete[] aMatrix;
-			for (int i = 0; i < z; i++)
+			for (int i = 0; i < bRow; i++)
 			{
 				delete[] bMatrix[i];
 			}
 			delete[] bMatrix;
-			for (int i = 0; i < ab; i++)
+			for (int i = 0; i < aRow; i++)
 			{
 				delete[] result[i];
 			}
 			delete[] result;
 			}
-			break;
+		break;
 
 		case 0:
 			cout << " Welcome back.\n";

@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="LaunchTask1.cpp" />
     <ClCompile Include="LaunchTask2.cpp" />
+    <ClCompile Include="LaunchTask2Functions.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
