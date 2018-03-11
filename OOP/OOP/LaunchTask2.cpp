@@ -73,6 +73,7 @@ int Menu2()
 
 		case 3:
 		{
+			//TODO: Много дублирования дальше, можно сократить.
 			double x1 = 0;
 			double x2 = 0;
 			double* x1Pointer = &x1;
@@ -94,6 +95,7 @@ int Menu2()
 
 		case 4:
 		{
+			//TODO: Много дублирования дальше, можно сократить.
 			double x1 = 0;
 			double x2 = 0;
 			double& x1Reference = x1;
@@ -179,8 +181,10 @@ int Menu2()
 			<< "3- Selection Sort" << endl;
 			int sortKey;
 			cin >> sortKey;
+//TODO:Правильнее использовать switch-case, а не if-else
 			if (sortKey == 1)
 			{
+				//TODO: Везде дублируется showarray - можно вынести.
 				cout << "BubbleSort results: " << endl;
 				double *arrPointer = array;
 				BubbleSort(arrPointer, size);
@@ -205,6 +209,9 @@ int Menu2()
 
 		case 10:
 		{
+//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
+	//TODO: Без передвижения диагонального скрол-бара.
+	//TODO: Правильнее будет располагать комментарии НАД комментируемой строкой.
 			//Инициализация матрицы А
 			int aRow; //Кол-во строк в матрице а 
 			int aCol; //Кол-во столбцов в матрице а
@@ -255,6 +262,7 @@ int Menu2()
 			cout << "Results: " << endl;
 			ShowMatrix(aRow, bCol, result);
 			//Освобождение памяти
+			//TODO: Дублирование ниже, исправьте.
 			for (int i = 0; i < aRow; i++)
 			{
 				delete[] aMatrix[i];

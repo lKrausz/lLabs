@@ -48,6 +48,7 @@ int Menu()
 
 int main()
 {
+	//TODO: Во всей программе не реализована проверка на вводимые значения!
 	int key = Menu();
 	cout << key << endl;
 	system("pause");

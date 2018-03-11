@@ -8,7 +8,8 @@
 using namespace std;
 
 int globalVariable = 7;
-
+//TODO: Внимательно прочитайте стандарт оформления кода RSDN https://rsdn.org/article/mag/200401/codestyle.XML
+//TODO: и приведите свой код в соответстие со стандартом
 void PrintHelloWorld()
 {
 	cout << "Hello, world!" << endl;
@@ -17,7 +18,10 @@ void PrintHelloWorld()
 
 double MakeCalculation(int value1, int value2, char operationKey)
 {
-	double z;	if (operationKey == '+') return value1 + value2;
+	//TODO: Эта переменная не используется
+	double z;
+//TODO:Правильнее использовать switch-case, а не if-else
+	if (operationKey == '+') return value1 + value2;
 	if (operationKey == '-') return value1 - value2;
 	if (operationKey == '*') return value1 * value2;
 	if (operationKey == '/') return value1 / value2;
@@ -26,7 +30,7 @@ double MakeCalculation(int value1, int value2, char operationKey)
 
 
 void DisplayRootsValues(int check, double x1, double x2)
-{
+{//TODO:Правильнее использовать switch-case, а не if-else
 	if (check == 0)
 	{
 		cout << "Have no roots" << endl << endl;
@@ -154,12 +158,16 @@ int GetPower(int base, int power)
 	else
 	{
 		return base * GetPower(base, power - 1);
-	}
+	}
+
 }
 
 
 int GuessRandomValueGame()
 {
+//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
+	//TODO: Без передвижения диагонального скрол-бара.
+	//TODO: Правильнее будет располагать комментарии НАД комментируемой строкой.
 	srand(time(NULL)); // для задания случайного начального числа
 	cout << "---Game: Guess the Number---" << endl;
 	int guessNumber = rand() % 10; // генерация угадываемого числа
@@ -179,6 +187,7 @@ int GuessRandomValueGame()
 			else
 			{
 				cout << "Wrong!!! Try again!" << endl;
+//TODO: Для if-else всегда надо расставлять скобки!
 				if (guessNumber < enteredNumber) cout << "Number less then " << enteredNumber << endl;
 				else cout << "Number more then " << enteredNumber << endl;
 				cin >> enteredNumber;
@@ -191,7 +200,8 @@ int GuessRandomValueGame()
 		}
 		shots++;
 	}
-	return 0;
+	return 0;
+
 }
 
 
@@ -217,6 +227,8 @@ void QuickSort(double *array, int const n)
 	int const lenD = n;
 	int pivot = 0;
 	int ind = lenD / 2;
+//TODO: Внимательно прочитайте стандарт оформления кода RSDN https://rsdn.org/article/mag/200401/codestyle.XML
+//TODO: и приведите свой код в соответстие со стандартом
 	int i, j = 0, k = 0;
 	if (lenD>1) {
 		double* L = new double[lenD];
@@ -286,7 +298,7 @@ void ShowArray(double array[], int  size)
 	}
 }
 
-
+//TODO: Именование метода не корректное. Название метода должно быть отглагольным и говорить о действии.
 int** MatrixValues(int row, int col, int **matrix)
 {
 	for (int i = 0; i < row; i++)

@@ -106,7 +106,8 @@ void PredCondition()
 	{
 		cout << "Value is now: " << a << endl;
 		a++;
-	}
+	}
+
 }
 
 //÷икл с пост-условием.
@@ -148,7 +149,8 @@ void Break()
 			break;
 		}
 	}
-	cout << "A is " << a << endl;
+	cout << "A is " << a << endl;
+
 }
 
 //явное и не€вное преобразование типов.
