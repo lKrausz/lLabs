@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <iostream>
 #include <ctime>
@@ -18,53 +17,78 @@ void PrintHelloWorld()
 
 double MakeCalculation(int value1, int value2, char operationKey)
 {
-	//TODO: Эта переменная не используется
-	double z;
-//TODO:Правильнее использовать switch-case, а не if-else
-	if (operationKey == '+') return value1 + value2;
-	if (operationKey == '-') return value1 - value2;
-	if (operationKey == '*') return value1 * value2;
-	if (operationKey == '/') return value1 / value2;
-	if (operationKey == '%') return value1 % value2;
+	//TODO:Правильнее	использовать switch-case, а не if-else
+	//done
+	switch (operationKey)
+	{
+	case '+': return value1 + value2;
+	case '-': return value1 - value2;
+	case '*': return value1 * value2;
+	case '/': return value1 / value2;
+	case '%': return value1 % value2;
+	}
 }
 
 
 void DisplayRootsValues(int check, double x1, double x2)
 {//TODO:Правильнее использовать switch-case, а не if-else
-	if (check == 0)
+//done
+	switch (check)
 	{
+	case 0:
+		{
 		cout << "Have no roots" << endl << endl;
-	}
-	if (check == 1)
-	{
+		}
+		break;
+	case 1:
+		{
 		cout << "Real roots: x1 = x2 = " << x1 << endl << endl;
-	}
-	if (check == 2)
-	{
+		}
+		break;
+	case 2:
+		{
 		cout << "Real roots:" << endl << "x1 = " << x1 << endl << "x2: " << x2 << endl << endl;
-	}
-	if (check == -1)
+		}
+		break;
+	case -1:
 	{
 		cout << "Complex roots:" << endl << "x1 = " << x1 << " + " << x2 << "i" << endl;
 		cout << "x2 = " << x1 << " - " << x2 << "i" << endl << endl;
 	}
+		break;
+	}	
 }
+
+void TestGetRootsResults(int a, int b, int c, double* x1, double* x2)
+{
+	int check = GetRoots(a, b, c, x1, x2);
+	DisplayRootsValues(check, *x1, *x2);
+}
+
+
+void TestGetRootsResults(int a, int b, int c, double& x1, double& x2)
+{
+	int check = AnotherGetRoots(a, b, c, x1, x2);
+	DisplayRootsValues(check, x1, x2);
+}
+
 
 
 int GetRoots(int a, int b, int c, double* x1, double* x2)
 {
 	cout << "Quadratic equation: " << a << " * x^2 + " << b << " x + " << c << " = 0 " << endl;
-	double discriminant;
 	if (a != 0)
 	{
-		discriminant = b * b - 4 * a*c;
-		if (discriminant < 0) //комплексные корни
+		double discriminant = b * b - 4 * a*c;
+		//комплексные корни
+		if (discriminant < 0) 
 		{
 			*x1 = -b / (2 * a);
 			*x2 = sqrt(-discriminant) / (2 * a);
 			return -1;
 		}
-		if (discriminant == 0) //один действительный корень
+		//один действительный корень
+		if (discriminant == 0) 
 		{
 			*x1 = -b / 2 / a;
 			return 1;
@@ -87,17 +111,18 @@ int GetRoots(int a, int b, int c, double* x1, double* x2)
 int AnotherGetRoots(int a, int b, int c, double& x1, double& x2)
 {
 	cout << "Quadratic equation: " << a << " * x^2 + " << b << " x + " << c << " = 0 " << endl;
-	double discriminant;
 	if (a != 0)
 	{
-		discriminant = b * b - 4 * a*c;
-		if (discriminant < 0) //комплексные корни
+		double discriminant = b * b - 4 * a*c;
+		//комплексные корни
+		if (discriminant < 0) 
 		{
 			x1 = -b / (2 * a);
 			x2 = sqrt(-discriminant) / (2 * a);
 			return -1;
 		}
-		if (discriminant == 0) //один действительный корень
+		//один действительный корень
+		if (discriminant == 0) 
 		{
 			x1 = -b / 2 / a;
 			return 1;
@@ -165,14 +190,18 @@ int GetPower(int base, int power)
 
 int GuessRandomValueGame()
 {
-//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
+	//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
 	//TODO: Без передвижения диагонального скрол-бара.
 	//TODO: Правильнее будет располагать комментарии НАД комментируемой строкой.
-	srand(time(NULL)); // для задания случайного начального числа
+	//done
+	srand(time(NULL)); 
 	cout << "---Game: Guess the Number---" << endl;
-	int guessNumber = rand() % 10; // генерация угадываемого числа
-	int enteredNumber = -1; // вводимое пользователем число
-	int shots = 1; // количество попыток
+	// угадываемое число
+	int guessNumber = rand() % 10;
+	// вводимое пользователем число
+	int enteredNumber = -1; 
+	// количество попыток
+	int shots = 1; 
 	cout << "Enter number from 0 to 9: ";
 	cin >> enteredNumber;
 
@@ -187,9 +216,16 @@ int GuessRandomValueGame()
 			else
 			{
 				cout << "Wrong!!! Try again!" << endl;
-//TODO: Для if-else всегда надо расставлять скобки!
-				if (guessNumber < enteredNumber) cout << "Number less then " << enteredNumber << endl;
-				else cout << "Number more then " << enteredNumber << endl;
+				//TODO: Для if-else всегда надо расставлять скобки!
+				//done
+				if (guessNumber < enteredNumber) 
+				{
+					cout << "Number less then " << enteredNumber << endl;
+				}
+				else 
+				{
+					cout << "Number more then " << enteredNumber << endl;
+				}
 				cin >> enteredNumber;
 			}
 		}
@@ -205,12 +241,12 @@ int GuessRandomValueGame()
 }
 
 
-void BubbleSort(double *arrPointer, int n)
+void BubbleSort(double *arrPointer, int size)
 {
 	double tmp = 0;
-	for (int i = 0; i<n; i++)
+	for (int i = 0; i < size; i++)
 	{
-		for (int j = (n - 1); j >= (i + 1); j--)
+		for (int j = (size - 1); j >= (i + 1); j--)
 		{
 			if (arrPointer[j]<arrPointer[j - 1])
 			{
@@ -222,64 +258,17 @@ void BubbleSort(double *arrPointer, int n)
 	}
 }
 
-void QuickSort(double *array, int const n)
-{
-	int const lenD = n;
-	int pivot = 0;
-	int ind = lenD / 2;
-//TODO: Внимательно прочитайте стандарт оформления кода RSDN https://rsdn.org/article/mag/200401/codestyle.XML
-//TODO: и приведите свой код в соответстие со стандартом
-	int i, j = 0, k = 0;
-	if (lenD>1) {
-		double* L = new double[lenD];
-		double* R = new double[lenD];
-		pivot = array[ind];
-		for (i = 0; i<lenD; i++)
-		{
-			if (i != ind)
-			{
-				if (array[i]<pivot)
-				{
-					L[j] = array[i];
-					j++;
-				}
-				else
-				{
-					R[k] = array[i];
-					k++;
-				}
-			}
-		}
-		QuickSort(L, j);
-		QuickSort(R, k);
-		for (int cnt = 0; cnt<lenD; cnt++)
-		{
-			if (cnt<j)
-			{
-				array[cnt] = L[cnt];;
-			}
-			else if (cnt == j)
-			{
-				array[cnt] = pivot;
-			}
-			else
-			{
-				array[cnt] = R[cnt - (j + 1)];
-			}
-		}
-	}
-}
 
-void SelectionSort(double array[], int lenD)
+void SelectionSort(double array[], int size)
 {
 	int j = 0;
 	int tmp = 0;
-	for (int i = 0; i<lenD; i++)
+	for (int i = 0; i < size; i++)
 	{
 		j = i;
-		for (int k = i; k<lenD; k++)
+		for (int k = i; k < size; k++)
 		{
-			if (array[j]>array[k])
+			if (array[j] > array[k])
 			{
 				j = k;
 			}
@@ -299,7 +288,8 @@ void ShowArray(double array[], int  size)
 }
 
 //TODO: Именование метода не корректное. Название метода должно быть отглагольным и говорить о действии.
-int** MatrixValues(int row, int col, int **matrix)
+//done
+int** CreateMatrixValues(int row, int col, int **matrix)
 {
 	for (int i = 0; i < row; i++)
 	{
@@ -330,16 +320,24 @@ void ShowMatrix(int row, int col, int **matrix)
 
 int** MultiplyMatrix(int resultRow, int resultCol, int aCol, int **aMatrix, int **bMatrix, int **result)
 {
-	int temp;
 	for (int row = 0; row < resultRow; row++) {
 		for (int col = 0; col < resultCol; col++)
 		{
 			for (int inner = 0; inner < aCol; inner++)
 			{
-				temp = aMatrix[row][inner] * bMatrix[inner][col];
+				const int temp = aMatrix[row][inner] * bMatrix[inner][col];
 				result[row][col] = result[row][col] + temp;
 			}
 		}
 	}
 	return result;
+}
+
+void DeleteMatrix(int size, int **matrix)
+{
+	for (int i = 0; i < size; i++)
+	{
+		delete[] matrix[i];
+	}
+	delete[] matrix;
 }

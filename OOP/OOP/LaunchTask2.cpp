@@ -3,6 +3,7 @@
 #include "Labs.h"
 #include <ctime>
 
+
 using namespace std;
 
 extern int globalVariable;
@@ -16,18 +17,17 @@ void LaunchTask2()
 	cout << key << "\n";
 }
 
+
 //Меню
 int Menu2()
 {
 	int key;
 	double z = 0;
 
-
-	int check;
-
-
 	do
 	{
+		while (true)
+		{
 		cout << "\t Choose next step:" << endl << endl
 			<< "1. ""Hello, World!"";" << endl
 			<< "2. Calculator;" << endl
@@ -42,6 +42,15 @@ int Menu2()
 			<< "0. Exit." << endl;
 
 		cin >> key;
+		if (!cin)
+		{
+			system("cls");
+			cout << "Incorrect value. Try again\n";
+			cin.clear();
+			while (cin.get() != '\n');
+		}
+		else break;
+		}
 		cin.ignore();
 		system("cls");
 		switch (key)
@@ -49,16 +58,19 @@ int Menu2()
 		case 1:
 		{
 			PrintHelloWorld();
-			}
+		}
 		break;
 
 		case 2:
 		{
 			int value1 = 0;
 			int value2 = 0;
-			char operationKey;
 			cout << "Enter mathematic operation (+, -, *, /, %): ";
-			operationKey = getchar();
+			char operationKey = getchar();
+			cout << "Enter fisrt value: " << endl;
+			cin >> value1;
+			cout << "Enter second value: " << endl;
+			cin >> value2;
 			while ((operationKey != '+') && (operationKey != '-') && (operationKey != '*') 
 				&& (operationKey != '/') && (operationKey != '%'))
 			{
@@ -74,44 +86,34 @@ int Menu2()
 		case 3:
 		{
 			//TODO: Много дублирования дальше, можно сократить.
+			//done
 			double x1 = 0;
 			double x2 = 0;
 			double* x1Pointer = &x1;
 			double* x2Pointer = &x2;
-			check = GetRoots(1, 3, 2, x1Pointer, x2Pointer);
-			DisplayRootsValues(check, *x1Pointer, *x2Pointer);
-			check = GetRoots(1, 4, 0, x1Pointer, x2Pointer);
-			DisplayRootsValues(check, *x1Pointer, *x2Pointer);
-			check = GetRoots(0, 1, 2, x1Pointer, x2Pointer);
-			DisplayRootsValues(check, *x1Pointer, *x2Pointer);
-			check = GetRoots(0, 0, 3, x1Pointer, x2Pointer);
-			DisplayRootsValues(check, *x1Pointer, *x2Pointer);
-			check = GetRoots(0, 1, 0, x1Pointer, x2Pointer);
-			DisplayRootsValues(check, *x1Pointer, *x2Pointer);
-			check = GetRoots(4, 1, 4, x1Pointer, x2Pointer);
-			DisplayRootsValues(check, *x1Pointer, *x2Pointer);
+			TestGetRootsResults(1, 3, 2, x1Pointer, x2Pointer);
+			TestGetRootsResults(1, 4, 0, x1Pointer, x2Pointer);
+			TestGetRootsResults(0, 1, 2, x1Pointer, x2Pointer);
+			TestGetRootsResults(0, 0, 3, x1Pointer, x2Pointer);
+			TestGetRootsResults(0, 1, 0, x1Pointer, x2Pointer);
+			TestGetRootsResults(4, 1, 4, x1Pointer, x2Pointer);
 		}
 		break;
 
 		case 4:
 		{
 			//TODO: Много дублирования дальше, можно сократить.
+			//done
 			double x1 = 0;
 			double x2 = 0;
 			double& x1Reference = x1;
 			double& x2Reference = x2;
-			check = AnotherGetRoots(1, 3, 2, x1Reference, x2Reference);
-			DisplayRootsValues(check, x1, x2);
-			check = AnotherGetRoots(1, 4, 0, x1Reference, x2Reference);
-			DisplayRootsValues(check, x1, x2);
-			check = AnotherGetRoots(0, 1, 2, x1Reference, x2Reference);
-			DisplayRootsValues(check, x1, x2);
-			check = AnotherGetRoots(0, 0, 3, x1Reference, x2Reference);
-			DisplayRootsValues(check, x1, x2);
-			check = AnotherGetRoots(0, 1, 0, x1Reference, x2Reference);
-			DisplayRootsValues(check, x1, x2);
-			check = AnotherGetRoots(4, 1, 4, x1Reference, x2Reference);
-			DisplayRootsValues(check, x1, x2);
+			TestGetRootsResults(1, 3, 2, x1Reference, x2Reference);
+			TestGetRootsResults(1, 4, 0, x1Reference, x2Reference);
+			TestGetRootsResults(0, 1, 2, x1Reference, x2Reference);
+			TestGetRootsResults(0, 0, 3, x1Reference, x2Reference);
+			TestGetRootsResults(0, 1, 0, x1Reference, x2Reference);
+			TestGetRootsResults(4, 1, 4, x1Reference, x2Reference);
 		}
 		break;
 
@@ -127,7 +129,7 @@ int Menu2()
 			float m = 5.0;
 			float n = 6.0;
 			SummNumbers(m, n);
-			}
+		}
 		break;
 
 		case 6:
@@ -141,7 +143,7 @@ int Menu2()
 			cout << "New global Variable: " << globalVariable << endl;
 			globalVariable = 5;
 			cout << "New global Variable: " << globalVariable << endl;
-			}
+		}
 		break;
 
 		case 7:
@@ -153,13 +155,13 @@ int Menu2()
 			cout << "Enter the power: " << endl;
 			cin >> power;
 			cout << base << " in power " << power << " = " << GetPower(base, power) << endl;
-			}
+		}
 		break;
 
 		case 8:
 		{
 			GuessRandomValueGame();
-			}
+		}
 		break;
 
 		case 9:
@@ -177,44 +179,45 @@ int Menu2()
 			}
 			cout << "Enter sort number: " << endl 
 			<< "1- Bubble Sort;" << endl 
-			<< "2- Quick Sort;" << endl 
-			<< "3- Selection Sort" << endl;
+			<< "2- Selection Sort" << endl;
 			int sortKey;
 			cin >> sortKey;
-//TODO:Правильнее использовать switch-case, а не if-else
-			if (sortKey == 1)
+			//TODO:Правильнее использовать switch-case, а не if-else
+			//done
+			switch (sortKey)
+			{
+			case 1:
 			{
 				//TODO: Везде дублируется showarray - можно вынести.
+				//done
 				cout << "BubbleSort results: " << endl;
 				double *arrPointer = array;
 				BubbleSort(arrPointer, size);
-				ShowArray(array, size);
 			}
-			if (sortKey == 2)
-			{
-				cout << "QuickSort results: " << endl;
-				QuickSort(array, size);
-				ShowArray(array, size);
-			}
-			if (sortKey == 3)
+			break;
+			case 2:
 			{
 				cout << "SelectionSort results: " << endl;
 				SelectionSort(array, size);
-				ShowArray(array, size);
 			}
-
+			break;
+			}
+			ShowArray(array, size);
 			delete[] array;
 		}
 		break;
 
 		case 10:
 		{
-//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
+	//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
 	//TODO: Без передвижения диагонального скрол-бара.
 	//TODO: Правильнее будет располагать комментарии НАД комментируемой строкой.
+	//done
 			//Инициализация матрицы А
-			int aRow; //Кол-во строк в матрице а 
-			int aCol; //Кол-во столбцов в матрице а
+			//Кол-во строк в матрице а 
+			int aRow;
+			//Кол-во столбцов в матрице а
+			int aCol;
 			cout << "Enter the number of rows of matrix A" << endl;
 			cin >> aRow;
 			cout << "Enter the number of columns of matrix A" << endl;
@@ -222,12 +225,14 @@ int Menu2()
 			srand(time(NULL));
 			int **aMatrix = new int*[aRow];
 			cout << "The array A is" << endl;
-			aMatrix = MatrixValues(aRow, aCol, aMatrix);
+			aMatrix = CreateMatrixValues(aRow, aCol, aMatrix);
 			ShowMatrix(aRow, aCol, aMatrix);
 
 			//Инициализация матрицы В
-			int bRow; //Кол-во строк в матрице b
-			int bCol; //Кол-во столбцов в матрице b
+			//Кол-во строк в матрице b
+			int bRow;
+			//Кол-во столбцов в матрице b
+			int bCol;
 			cout << "Enter the number of rows of matrix B" << endl;
 			cin >> bRow;
 			while (aCol != bRow)
@@ -240,7 +245,7 @@ int Menu2()
 			cin >> bCol;
 			int **bMatrix = new int*[bRow];
 			cout << "The array B is" << endl;
-			bMatrix = MatrixValues(bRow, bCol, bMatrix);
+			bMatrix = CreateMatrixValues(bRow, bCol, bMatrix);
 			ShowMatrix(bRow, bCol, bMatrix);
 
 			//Инициализация матрицы результата
@@ -263,21 +268,10 @@ int Menu2()
 			ShowMatrix(aRow, bCol, result);
 			//Освобождение памяти
 			//TODO: Дублирование ниже, исправьте.
-			for (int i = 0; i < aRow; i++)
-			{
-				delete[] aMatrix[i];
-			}
-			delete[] aMatrix;
-			for (int i = 0; i < bRow; i++)
-			{
-				delete[] bMatrix[i];
-			}
-			delete[] bMatrix;
-			for (int i = 0; i < aRow; i++)
-			{
-				delete[] result[i];
-			}
-			delete[] result;
+			//done
+			DeleteMatrix(aRow, aMatrix);
+			DeleteMatrix(bRow, bMatrix);
+			DeleteMatrix(aRow, result);
 			}
 		break;
 

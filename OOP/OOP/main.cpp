@@ -2,6 +2,7 @@
 #include "Labs.h"
 #include <iostream>
 
+
 using namespace std;
 
 //Μενώ
@@ -11,12 +12,23 @@ int Menu()
 
 	do
 	{
-		cout << "\t Choose laboratory work:" << endl << endl
-			<< "1. Task 1;" << endl
-			<< "2. Task 2;" << endl
-			<< "0. Exit." << endl;
+		while (true)
+		{
+			cout << "\t Choose laboratory work:" << endl << endl
+				<< "1. Task 1;" << endl
+				<< "2. Task 2;" << endl
+				<< "0. Exit." << endl;
 
-		cin >> key;
+			cin >> key;
+			if (!cin)
+			{
+				system("cls");
+				cout << "Incorrect value. Try again\n";
+				cin.clear();
+				while (cin.get() != '\n');
+			}
+			else break; 
+		}
 		cin.ignore(1);
 		system("cls");
 		switch (key)
