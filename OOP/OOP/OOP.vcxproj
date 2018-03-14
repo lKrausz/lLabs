@@ -118,12 +118,15 @@
     <ClCompile Include="LaunchTask1.cpp" />
     <ClCompile Include="LaunchTask2.cpp" />
     <ClCompile Include="LaunchTask2Functions.cpp" />
+    <ClCompile Include="LaunchTask3Functions.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="LaunchTask3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Labs.h" />
     <ClInclude Include="LaunchTask1Functions.h" />
     <ClInclude Include="LaunchTask2Functions.h" />
+    <ClInclude Include="LaunchTask3Functions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

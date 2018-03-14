@@ -17,6 +17,7 @@ int Menu()
 			cout << "\t Choose laboratory work:" << endl << endl
 				<< "1. Task 1;" << endl
 				<< "2. Task 2;" << endl
+				<< "3. Task 3;" << endl
 				<< "0. Exit." << endl;
 
 			cin >> key;
@@ -41,6 +42,11 @@ int Menu()
 		case 2:
 
 			LaunchTask2();
+			break;
+
+		case 3:
+
+			LaunchTask3();
 			break;
 
 		case 0:
