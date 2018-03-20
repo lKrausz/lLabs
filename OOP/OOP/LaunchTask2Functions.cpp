@@ -17,7 +17,7 @@ void PrintHelloWorld()
 
 double MakeCalculation(int value1, int value2, char operationKey)
 {
-	//TODO:Правильнее	использовать switch-case, а не if-else
+	//TODO:Правильнее использовать switch-case, а не if-else
 	//done
 	switch (operationKey)
 	{
@@ -84,7 +84,7 @@ int GetRoots(int a, int b, int c, double* x1, double* x2)
 		if (discriminant < 0) 
 		{
 			*x1 = -b / (2 * a);
-			*x2 = sqrt(-discriminant) / (2 * a);
+			*x2 = sqrt(-discriminant) / 2 / a;
 			return -1;
 		}
 		//один действительный корень
@@ -118,7 +118,7 @@ int AnotherGetRoots(int a, int b, int c, double& x1, double& x2)
 		if (discriminant < 0) 
 		{
 			x1 = -b / (2 * a);
-			x2 = sqrt(-discriminant) / (2 * a);
+			x2 = sqrt(-discriminant) / 2 / a;
 			return -1;
 		}
 		//один действительный корень

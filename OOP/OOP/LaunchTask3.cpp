@@ -1,18 +1,15 @@
 #include <iostream>
 #include "Labs.h"
 #include "LaunchTask3Functions.h"
+#include "StructPersonFunctions.h"
 
 
 using namespace std;
-
-extern int globalVariable;
-
 
 //Μενώ
 int Menu3()
 {
 	int key;
-
 	do
 	{
 		while (true)
@@ -96,7 +93,8 @@ int Menu3()
 		break;
 
 		case 5:
-		{			char* string = CreateLength();
+		{
+			char* string = CreateLength();
 			cout << "Uppercase string: " << Uppercase(string) << endl;
 			delete[] string;
 		}
@@ -137,10 +135,12 @@ int Menu3()
 
 		case 10:
 		{
-			Person newPerson = ReadPerson();
-			PrintPerson(newPerson);
+			Person* newPerson = new Person();
+			ReadPerson(newPerson);
+			ShowPerson(newPerson);
+			delete newPerson;
+			break;
 		}
-		break;
 
 		case 0:
 			cout << " Welcome back.\n";

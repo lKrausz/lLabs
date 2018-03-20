@@ -1,21 +1,6 @@
 #pragma once
 
 
-struct Person
-{
-	char Surname[40];
-	char Name[20];
-	char Sex[1];
-	int Age;
-};
-
-//Ввод данных 
-Person ReadPerson();
-
-//Вывод данных на экран
-void PrintPerson(Person person);
-
-
 //Ввод строки
 char* CreateLength();
 

@@ -26,7 +26,8 @@ int GetLength(char* str)
 
 char* Concatenate(char* string1, char* string2)
 {
-	char* result = new char[20];
+	//Длина строки-результата - сумма длин строк + 1 для '\0'
+	char* result = new char[GetLength(string1)+ GetLength(string2) + 1];
 	int i;
 	for ( i = 0; i < GetLength(string1); i++)
 	{
@@ -68,7 +69,7 @@ int FindSubstring(char* string, char* substring)
 		if (string[i] == substring[0])
 		{
 			bool subString = true;
-			int str = ++i;
+			int str = i + 1;
 			for (int subStr = 1; subStr < GetLength(substring); subStr++)
 			{
 				if (str > GetLength(string))
@@ -83,7 +84,7 @@ int FindSubstring(char* string, char* substring)
 			}
 			if (subString)
 			{
-				return i-1;
+				return i - 1;
 			}
 		}
 	}
@@ -160,7 +161,12 @@ int GetSourcePart(char* source, char* partString, char symbol, const char partNa
 		partString[i] = source[size - 1];
 		i++;
 		size--;
-		if (size == -1) return NULL;
+		if (size == -1) 
+		{
+			partString[i - 1] = '\0';
+			return NULL;
+		}
+		
 	}
 	if (symbol == '\\')
 	{
@@ -180,10 +186,25 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 	int size = GetLength(source);
 	
 	size = GetSourcePart(source, extension, '.', "Extension: ", size);
+	if (size == NULL)
+	{
+		size = GetLength(source);
+		cout << "Extension: NULL" << endl;
+	}
 	size = GetSourcePart(source, name, '\\', "Name: ", size);
-	source[size + 1] = '\0';
-	path = source;
-	cout << "Path: " << path << endl;
+	if (size == NULL)
+	{
+		size = GetLength(source);
+		cout << "Name: " << RevertString(name, GetLength(name) - 1) << endl;
+		cout << "Path: NULL" << endl;
+	}
+	else
+	{
+		source[size + 1] = '\0';
+		path = source;
+		cout << "Path: " << path << endl;
+	}
+	
 }
 
 /*
@@ -198,38 +219,3 @@ char* ReplaceSpacesOnTabs(char* string)
 } 
 */
 
-Person ReadPerson()
-{
-	Person person;
-	cout << "Surname: ";
-	cin.getline(person.Surname, 40);
-	cout << "Name: ";
-	cin.getline(person.Name, 20);
-	while (person.Sex[0] != 'M' && person.Sex[0] != 'F')
-	{
-		cout << "Sex ( Enter 'M' for male or 'F' for female): ";
-		cin.getline(person.Sex, 2);
-		if (person.Sex[0] != 'M' && person.Sex[0] != 'F')
-		{
-			cout << "Incorrect value. Try again." << endl;
-		}
-	}
-	while (person.Age < 0)
-	{
-		cout << "Enter the age: ";
-		cin >> person.Age;
-		if (person.Age < 0)
-		{
-			cout << "Incorrect value. Try again." << endl;
-		}
-	}
-	return person;
-}
-
-void PrintPerson(Person person)
-{
-	cout << "Surname: " << person.Surname << endl
-	 << "Name: " << person.Name << endl
-	 << "Sex: " << person.Sex << endl
-	 << "Age: " << person.Age << endl;
-}

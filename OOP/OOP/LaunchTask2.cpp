@@ -22,7 +22,6 @@ void LaunchTask2()
 int Menu2()
 {
 	int key;
-	double z = 0;
 
 	do
 	{
@@ -58,8 +57,8 @@ int Menu2()
 		case 1:
 		{
 			PrintHelloWorld();
+			break;
 		}
-		break;
 
 		case 2:
 		{
@@ -78,15 +77,13 @@ int Menu2()
 				operationKey = getchar();
 				fflush(stdin);
 			}
-			z = MakeCalculation(value1, value2, operationKey);
+			int z = MakeCalculation(value1, value2, operationKey);
 			cout << value1 << " " << operationKey << " " << value2 << " = " << z << ".\n";
+			break;
 			}
-		break;
 
 		case 3:
 		{
-			//TODO: Много дублирования дальше, можно сократить.
-			//done
 			double x1 = 0;
 			double x2 = 0;
 			double* x1Pointer = &x1;
@@ -97,13 +94,11 @@ int Menu2()
 			TestGetRootsResults(0, 0, 3, x1Pointer, x2Pointer);
 			TestGetRootsResults(0, 1, 0, x1Pointer, x2Pointer);
 			TestGetRootsResults(4, 1, 4, x1Pointer, x2Pointer);
+			break;
 		}
-		break;
 
 		case 4:
 		{
-			//TODO: Много дублирования дальше, можно сократить.
-			//done
 			double x1 = 0;
 			double x2 = 0;
 			double& x1Reference = x1;
@@ -114,8 +109,8 @@ int Menu2()
 			TestGetRootsResults(0, 0, 3, x1Reference, x2Reference);
 			TestGetRootsResults(0, 1, 0, x1Reference, x2Reference);
 			TestGetRootsResults(4, 1, 4, x1Reference, x2Reference);
+			break;
 		}
-		break;
 
 		case 5:
 		{
@@ -128,9 +123,10 @@ int Menu2()
 			SummNumbers(a, y);
 			float m = 5.0;
 			float n = 6.0;
-			SummNumbers(m, n);
+			SummNumbers(m, n);
+			break;
 		}
-		break;
+
 
 		case 6:
 		{
@@ -143,8 +139,8 @@ int Menu2()
 			cout << "New global Variable: " << globalVariable << endl;
 			globalVariable = 5;
 			cout << "New global Variable: " << globalVariable << endl;
+			break;
 		}
-		break;
 
 		case 7:
 		{
@@ -155,14 +151,14 @@ int Menu2()
 			cout << "Enter the power: " << endl;
 			cin >> power;
 			cout << base << " in power " << power << " = " << GetPower(base, power) << endl;
+			break;
 		}
-		break;
 
 		case 8:
 		{
 			GuessRandomValueGame();
+			break;
 		}
-		break;
 
 		case 9:
 		{
@@ -182,41 +178,35 @@ int Menu2()
 			<< "2- Selection Sort" << endl;
 			int sortKey;
 			cin >> sortKey;
-			//TODO:Правильнее использовать switch-case, а не if-else
-			//done
 			switch (sortKey)
 			{
-			case 1:
-			{
-				//TODO: Везде дублируется showarray - можно вынести.
-				//done
-				cout << "BubbleSort results: " << endl;
-				double *arrPointer = array;
-				BubbleSort(arrPointer, size);
-			}
-			break;
-			case 2:
-			{
-				cout << "SelectionSort results: " << endl;
-				SelectionSort(array, size);
-			}
-			break;
+				case 1:
+				{
+					cout << "BubbleSort results: " << endl;
+					double *arrPointer = array;
+					BubbleSort(arrPointer, size);
+					break;
+				}
+				case 2:
+				{
+					cout << "SelectionSort results: " << endl;
+					SelectionSort(array, size);
+					break;
+				}
+				default:
+				{
+					cout << " Mistake. Try again.\n";
+					break;
+				}
 			}
 			ShowArray(array, size);
 			delete[] array;
+			break;
 		}
-		break;
-
 		case 10:
 		{
-	//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
-	//TODO: Без передвижения диагонального скрол-бара.
-	//TODO: Правильнее будет располагать комментарии НАД комментируемой строкой.
-	//done
 			//Инициализация матрицы А
-			//Кол-во строк в матрице а 
 			int aRow;
-			//Кол-во столбцов в матрице а
 			int aCol;
 			cout << "Enter the number of rows of matrix A" << endl;
 			cin >> aRow;
@@ -266,18 +256,17 @@ int Menu2()
 			result = MultiplyMatrix(aRow, bCol, aCol, aMatrix, bMatrix, result);
 			cout << "Results: " << endl;
 			ShowMatrix(aRow, bCol, result);
-			//Освобождение памяти
-			//TODO: Дублирование ниже, исправьте.
-			//done
+			
 			DeleteMatrix(aRow, aMatrix);
 			DeleteMatrix(bRow, bMatrix);
 			DeleteMatrix(aRow, result);
-			}
-		break;
+			break;
+		}
 
 		case 0:
 			cout << " Welcome back.\n";
 			break;
+
 		default:
 			cout << " Mistake. Try again.\n";
 			break;

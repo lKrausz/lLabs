@@ -47,6 +47,7 @@ void Pointer()
 {
 	int value;
 	int* pointer;
+	int &reference = value;
 	int anotherValue;
 	value = 5;
 
@@ -56,6 +57,7 @@ void Pointer()
 	cout << "Value, stored in pointer: " << anotherValue << endl;
 	cout << "Address in pointer: " << pointer << endl;
 	cout << "Value in pointer: " << *pointer << endl;
+	cout << "Reference: " << reference << endl;
 }
 
 // Определение четности/нечетности числа. 
