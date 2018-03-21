@@ -135,10 +135,8 @@ int Menu3()
 
 		case 10:
 		{
-			Person* newPerson = new Person();
-			ReadPerson(newPerson);
-			ShowPerson(newPerson);
-			delete newPerson;
+			Person person = ReadPerson();
+			ShowPerson(person);
 			break;
 		}
 

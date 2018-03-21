@@ -18,10 +18,10 @@ struct Person
 };
 
 //Вывод данных
-void ShowPerson(Person *person);
+void ShowPerson(Person person);
 //Ввод данных
-Person ReadPerson(Person *person);
+Person ReadPerson();
 //Рандомные данные
-Person ReadRandomPerson(Person *person);
+Person ReadRandomPerson();
 //Перенос const char строки в строку структуры Person
 void CopyCharString(char* structString, const char* constString);

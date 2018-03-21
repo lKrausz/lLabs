@@ -3,7 +3,7 @@
 
 struct Node
 {
-	Person* data;
+	Person data;
 	Node* next = NULL;
 	Node* prev = NULL;
 };
@@ -14,7 +14,7 @@ struct List
 	Node* tail = NULL;
 };
 
-void AddElement(List* list, Person* data);
-void InsertElement(List* list, Person* data, int index);
+void AddElement(List* list, Person data);
+void InsertElement(List* list, Person data, int index);
 void DeleteElement(List* list, int index);
-void ListShow(List* list, Person* person);
+void ListShow(List* list);

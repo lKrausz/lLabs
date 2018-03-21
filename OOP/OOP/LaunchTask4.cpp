@@ -7,10 +7,11 @@
 using namespace std;
 
 //Μενώ
-int Menu4(List* list, Person* person)
+int Menu4(List* list)
 {
 	int key;
 	int index;
+	Person person;
 
 	do
 	{
@@ -40,28 +41,28 @@ int Menu4(List* list, Person* person)
 		{
 		case 1:
 		{
-			ReadPerson(person);
+			person = ReadPerson();
 			AddElement(list, person);
-			ListShow(list, person);
+			ListShow(list);
 			break;
 		}
 
 		case 2:
 		{
-			ReadRandomPerson(person);
+			person = ReadRandomPerson();
 			AddElement(list, person);
-			ListShow(list, person);
+			ListShow(list);
 			break;
 		}
 
 		case 3:
 		{
-			ListShow(list, person);
+			ListShow(list);
 			cout << "Enter the index of element:\n";
 			cin >> index;
-			ReadPerson(person);
+			person = ReadPerson();
 			InsertElement(list, person, index);
-			ListShow(list, person);
+			ListShow(list);
 			break;
 		}
 
@@ -70,7 +71,7 @@ int Menu4(List* list, Person* person)
 			cout << "Enter the index of element:\n";
 			cin >> index;
 			DeleteElement(list, index);
-			ListShow(list, person);
+			ListShow(list);
 			break;
 		}
 
@@ -105,14 +106,12 @@ int Menu4(List* list, Person* person)
 
 void LaunchTask4()
 {
-	Person* person = new Person();
 	List* list = new List();
 	list->head = NULL;
 	list->tail = NULL;
 
-	int key = Menu4(list, person);
+	int key = Menu4(list);
 	cout << key << "\n";
 	system("pause");
-	delete person;
 	delete list;
 }

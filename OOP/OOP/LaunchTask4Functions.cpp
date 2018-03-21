@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include "LaunchTask4Functions.h"
 
-void ListShow(List* list, Person* data)
+void ListShow(List* list)
 {
 	Node* current = list->head;
 	if (list->head == nullptr)
@@ -18,7 +18,7 @@ void ListShow(List* list, Person* data)
 };
 
 // Добавление узла в ДЛС 
-void AddElement(List* list, Person* data)
+void AddElement(List* list, Person data)
 {
 	//валидация параметров
 	Node* newNode = new Node();
@@ -43,7 +43,7 @@ void AddElement(List* list, Person* data)
 	list->tail = newNode;
 }
 // Вставка узла ДЛС
-void InsertElement(List* list, Person* data, int index)
+void InsertElement(List* list, Person data, int index)
 {
 	Node* newNode = new Node();
 	newNode->data = data;
@@ -145,4 +145,5 @@ void DeleteElement(List* list, int index)
 
 	delete node;
 }
+
 
