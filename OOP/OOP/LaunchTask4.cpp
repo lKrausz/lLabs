@@ -6,6 +6,7 @@
 
 using namespace std;
 
+
 //Μενώ
 int Menu4(List* list)
 {
@@ -23,6 +24,7 @@ int Menu4(List* list)
 				<< "3. Insert list;" << endl
 				<< "4. Remove person;" << endl
 				<< "5. Stack;" << endl
+				<< "6. Person Adress;" << endl
 				<< "0. Exit." << endl;
 
 			cin >> key;
@@ -86,7 +88,16 @@ int Menu4(List* list)
 			cout << key1 << "\n";
 			system("pause");
 			Delete(stack);
+			break;
+		}
 
+		case 6:
+		{
+			cout << "Enter the index of element:\n";
+			cin >> index;
+			Person* adress = GetPersonAderess(list, index);
+			cout << "Adress: " << adress << endl;
+			break;
 		}
 
 		case 0:
@@ -106,6 +117,7 @@ int Menu4(List* list)
 
 void LaunchTask4()
 {
+	system("color F0");
 	List* list = new List();
 	list->head = NULL;
 	list->tail = NULL;

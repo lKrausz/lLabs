@@ -18,3 +18,5 @@ void AddElement(List* list, Person data);
 void InsertElement(List* list, Person data, int index);
 void DeleteElement(List* list, int index);
 void ListShow(List* list);
+
+Person* GetPersonAderess(List* list, int index);
