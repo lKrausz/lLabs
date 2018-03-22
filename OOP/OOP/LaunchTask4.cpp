@@ -12,7 +12,6 @@ int Menu4(List* list)
 {
 	int key;
 	int index;
-	Person person;
 
 	do
 	{
@@ -43,28 +42,27 @@ int Menu4(List* list)
 		{
 		case 1:
 		{
-			person = ReadPerson();
-			AddElement(list, person);
-			ListShow(list);
+			InsertElement(list, ReadPerson(), GetListLength(list));
+			ShowList(list);
 			break;
 		}
 
 		case 2:
 		{
-			person = ReadRandomPerson();
-			AddElement(list, person);
-			ListShow(list);
+			cout << "Enter the index of element:\n";
+			cin >> index;
+			InsertElement(list, ReadRandomPerson(), index);
+			ShowList(list);
 			break;
 		}
 
 		case 3:
 		{
-			ListShow(list);
+			ShowList(list);
 			cout << "Enter the index of element:\n";
 			cin >> index;
-			person = ReadPerson();
-			InsertElement(list, person, index);
-			ListShow(list);
+			InsertElement(list, ReadPerson(), index);
+			ShowList(list);
 			break;
 		}
 
@@ -73,7 +71,7 @@ int Menu4(List* list)
 			cout << "Enter the index of element:\n";
 			cin >> index;
 			DeleteElement(list, index);
-			ListShow(list);
+			ShowList(list);
 			break;
 		}
 
@@ -95,8 +93,7 @@ int Menu4(List* list)
 		{
 			cout << "Enter the index of element:\n";
 			cin >> index;
-			Person* adress = GetPersonAderess(list, index);
-			cout << "Adress: " << adress << endl;
+			cout << "Adress: " << GetPersonAderess(list, index) << endl;
 			break;
 		}
 
@@ -119,8 +116,8 @@ void LaunchTask4()
 {
 	system("color F0");
 	List* list = new List();
-	list->head = NULL;
-	list->tail = NULL;
+	list->head = nullptr;
+	list->tail = nullptr;
 
 	int key = Menu4(list);
 	cout << key << "\n";

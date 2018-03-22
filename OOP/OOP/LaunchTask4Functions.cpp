@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include "LaunchTask4Functions.h"
 
-void ListShow(List* list)
+void ShowList(List* list)
 {
 	Node* current = list->head;
 	if (list->head == nullptr)
@@ -17,17 +17,36 @@ void ListShow(List* list)
 	cout << endl;
 };
 
-// Добавление узла в ДЛС 
-void AddElement(List* list, Person data)
+
+int GetListLength(List* list)
 {
-	//валидация параметров
+	Node* count = list->head;
+	int ListSize = 0;
+	if (list->head == nullptr) return 0;
+	do
+	{
+		count = count->next;
+		ListSize++;
+	} while (count != nullptr);
+	return ListSize;
+}
+
+
+void InsertElement(List* list, Person data, int index)
+{
+	if (index > GetListLength(list) || index < 0)
+	{
+		cout << "Error. Incorrect index." << endl;
+		return;
+	}
+
 	Node* newNode = new Node();
 	newNode->data = data;
 	newNode->next = nullptr;
+	newNode->prev = nullptr;
 
+	Node* current = list->head;
 	int i = 0;
-	Node* node = list->head;
-
 	if (list->head == nullptr)
 	{
 		list->head = newNode;
@@ -35,45 +54,7 @@ void AddElement(List* list, Person data)
 		return;
 	}
 
-	while (node->next)
-		node = node->next;
-
-	node->next = newNode;
-	newNode->prev = node;
-	list->tail = newNode;
-}
-// Вставка узла ДЛС
-void InsertElement(List* list, Person data, int index)
-{
-	Node* newNode = new Node();
-	newNode->data = data;
-	newNode->next = NULL;
-	newNode->prev = NULL;
-
-	Node* node = list->head;
-	int i = 0;
-	while (i != index && node != NULL)
-	{
-		++i;
-		node = node->next;
-	}
-	// n check
-	Node* count = list->head;
-	int n = 0;
-	do
-	{
-		count = count->next;
-		n++;
-	} while (count != NULL);
-
-	if (index > n)
-	{
-		throw "Mistake, Master! This index too big. Try again! \n";
-		return;
-	}
-
-	Node* current = list->head;
-	for (int i = 1; i < index && current->next != NULL; i++)
+	for (int i = 1; i < index && current->next != nullptr; i++)
 		current = current->next;
 	if (index == 0)
 	{
@@ -85,17 +66,15 @@ void InsertElement(List* list, Person data, int index)
 	else
 	{
 		//вставляем новый элемент на непервое место
-		if (current->next != NULL)
+		if (current->next != nullptr)
 			current->next->prev = newNode;
 		newNode->next = current->next;
 		current->next = newNode;
 		newNode->prev = current;
 		current = newNode;
 	}
-
 }
 
-// Удаление узла из ДЛС
 
 void DeleteElement(List* list, int index)
 {
@@ -145,6 +124,7 @@ void DeleteElement(List* list, int index)
 
 	delete node;
 }
+
 
 Person* GetPersonAderess(List* list, int index)
 {

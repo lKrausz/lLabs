@@ -5,7 +5,7 @@ using namespace std;
 
 int MenuStack(Stack* stack)
 {
-	char key;
+	int key;
 	int data;
 	bool check;
 	cout << "Your stack:" << endl << endl;
@@ -25,7 +25,7 @@ int MenuStack(Stack* stack)
 		system("cls");
 		switch (key)
 		{
-		case '1':
+		case 1:
 			cout << "Enter the element which you want to add:\n";
 			cin >> data;
 			check = IsFull(stack);
@@ -40,7 +40,7 @@ int MenuStack(Stack* stack)
 			StackShow(stack);
 
 			break;
-		case '2':
+		case 2:
 			cout << "Your stack:" << endl << endl;
 			StackShow(stack);
 			check = IsEmpty(stack);
@@ -56,31 +56,30 @@ int MenuStack(Stack* stack)
 			cout << "Your stack:" << endl << endl;
 			StackShow(stack);
 			break;
-		case '3':
+		case 3:
 			check = IsEmpty(stack);
 			if (check == true)
 				cout << "Your stack is empty" << endl;
 			else
 				cout << "Your stack isn't empty" << endl;
 			break;
-		case '4':
+		case 4:
 			check = IsFull(stack);
 			if (check == true)
 				cout << "Your stack is full" << endl;
 			else
 				cout << "Your stack isn't full." << endl;
 			break;
-		case '0':
+		case 0:
 			cout << " Welcome back." << endl;;
 			break;
 		default:
 			cout << " Mistake. Try again." << endl;;
 			break;
 		}
-	} while (key != '0');
+	} while (key != 0);
 
-	int k = atoi(&key);
-	return(k);
+	return(key);
 
 };
 
