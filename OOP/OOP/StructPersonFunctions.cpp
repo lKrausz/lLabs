@@ -3,6 +3,7 @@
 #include <random>
 #include "StructPersonFunctions.h"
 
+
 //¬вод данных
 Person ReadPerson()
 {
@@ -17,6 +18,19 @@ Person ReadPerson()
 
 	int sex;
 	cin >> sex;
+	switch (sex)
+	{
+		case 1:
+		{
+			person.Sex = male;
+			break;
+		}
+		case 0:
+		{
+			person.Sex = female;
+			break;
+		}
+	}
 	do
 	{
 		cout << "Enter age: " << endl;
@@ -44,7 +58,7 @@ void ShowPerson(Person person)
 	default:
 		break;
 	}
-	cout << "Age: " << person.Age << endl;
+	cout << "Age: " << person.Age << endl << endl;
 }
 
 void CopyCharString(char* structString, const char* constString)
@@ -61,25 +75,27 @@ Person ReadRandomPerson()
 {
 	Person person;
 	srand(time(NULL));
-	person.Age = rand() % 10;
-	int sex = rand() % 1;
-
+	person.Age = 1 + rand() % 100;
+	int sex = rand() % 2;
 	switch (sex)
 	{
 	case 1:
 	{
+		person.Sex = male;
 		const char *maleSurname[] = { "Walter", "Krause", "Zimmer", "Regenherz", "Von-Webber" };
 		CopyCharString(person.Surname, maleSurname[rand() % 5]);
 		const char *maleName[] = { "Johann", "Walter", "Ludwig", "Karl", "Ulrich" };
 		CopyCharString(person.Name, maleName[rand() % 5]);
-
+		break;
 	}
 	case 0:
 	{
+		person.Sex = female;
 		const char *femaleSurname[] = { "Marinelli", "Alfieri", "Bellini", "Ferrario", "Cortese" };
 		CopyCharString(person.Surname, femaleSurname[rand() % 5]);
 		const char *femaleName[] = { "Annabella", "Ottavia", "Laura", "Alessia", "Chiara" };
 		CopyCharString(person.Name, femaleName[rand() % 5]);
+		break;
 	}
 	}
 	return person;

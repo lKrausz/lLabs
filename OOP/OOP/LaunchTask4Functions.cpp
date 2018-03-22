@@ -148,13 +148,14 @@ void DeleteElement(List* list, int index)
 
 Person* GetPersonAderess(List* list, int index)
 {
+	int count = 0;
 	Node* node = new Node;
 	node = list->head;
-	int count = 0;
 	while (count != index)
 	{
 		node = node->next;
 		count++;
 	}
+	if (count > index) return NULL;
 	return &node->data;
 }
