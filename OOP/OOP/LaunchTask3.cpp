@@ -47,8 +47,8 @@ int Menu3()
 			int size = GetLength(str);
 			cout << "String size: " << size << endl;
 			delete[] str;
+			break;
 		}
-		break;
 
 		case 2:
 		{
@@ -62,8 +62,8 @@ int Menu3()
 			delete[] str2;
 			delete[] str1;
 			delete[] result;
+			break;
 		}
-		break;
 
 		case 3:
 		{
@@ -73,8 +73,8 @@ int Menu3()
 			GetSubstring(str, 2, -4);
 			GetSubstring(str, 7, 8);
 			delete[] str;
+			break;
 		}
-		break;
 
 		case 4:
 		{
@@ -89,24 +89,25 @@ int Menu3()
 			char testSubstring3[10] = "sum";
 			TestSubstringFind(string, subString, testSubstring3);
 			delete[] subString;
+			break;
 		}
-		break;
 
 		case 5:
 		{
 			char* string = CreateLength();
 			cout << "Uppercase string: " << Uppercase(string) << endl;
 			delete[] string;
+			break;
 		}
-		break;
+
 
 		case 6:
 		{
 			char* string = CreateLength();
 			cout << "Lowercase string: " << Lowercase(string) << endl;
 			delete[] string;
+			break;
 		}
-		break;
 
 		case 7:
 		{
@@ -118,20 +119,26 @@ int Menu3()
 			delete[] source;
 			delete[] name;
 			delete[] extension;
+			break;
 		}
-		break;
 
 		case 8:
 		{
-			cout << "Coming soon" << endl;
+			char* string = (char*)"Cake\tis\ta lie!";
+			cout << ReplaceTabsOnSpaces(string) << endl;
+			char* string1 = (char*)"Cake\t\tis a lie!";
+			cout << ReplaceTabsOnSpaces(string1) << endl;
+			break;
 		}
-		break;
 
 		case 9:
 		{
-			cout << "Coming soon" << endl;
+			char* string = (char*)"Cake::::is::a:lie!";
+			cout << ReplaceSpacesOnTabs(string) << endl;
+			char* string1 = (char*)"Cake::::is::::a:lie! ";
+			cout << ReplaceSpacesOnTabs(string1) << endl;
+			break;
 		}
-		break;
 
 		case 10:
 		{

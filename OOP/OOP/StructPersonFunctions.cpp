@@ -2,6 +2,7 @@
 #include <ctime>
 #include <random>
 #include "StructPersonFunctions.h"
+#include <iomanip>
 
 
 //¬вод данных
@@ -45,20 +46,17 @@ Person ReadPerson()
 
 void ShowPerson(Person person)
 {
-	cout << "Surname: " << person.Surname << endl;
-	cout << "Name: " << person.Name << endl;
+	cout << setw(11) << person.Surname << setw(10) << person.Name;
 	switch (person.Sex)
 	{
 	case 0:
-		cout << "Sex: female" << endl;
+		cout << setw(8) << "female";
 		break;
 	case 1:
-		cout << "Sex: male" << endl;
-		break;
-	default:
+		cout << setw(8) << "male";
 		break;
 	}
-	cout << "Age: " << person.Age << endl << endl;
+	cout << setw(3) << person.Age << endl;
 }
 
 void CopyCharString(char* structString, const char* constString)

@@ -7,8 +7,7 @@
 using namespace std;
 
 int globalVariable = 7;
-//TODO: Внимательно прочитайте стандарт оформления кода RSDN https://rsdn.org/article/mag/200401/codestyle.XML
-//TODO: и приведите свой код в соответстие со стандартом
+
 void PrintHelloWorld()
 {
 	cout << "Hello, world!" << endl;
@@ -17,8 +16,6 @@ void PrintHelloWorld()
 
 double MakeCalculation(int value1, int value2, char operationKey)
 {
-	//TODO:Правильнее использовать switch-case, а не if-else
-	//done
 	switch (operationKey)
 	{
 	case '+': return value1 + value2;
@@ -31,8 +28,7 @@ double MakeCalculation(int value1, int value2, char operationKey)
 
 
 void DisplayRootsValues(int check, double x1, double x2)
-{//TODO:Правильнее использовать switch-case, а не if-else
-//done
+{
 	switch (check)
 	{
 	case 0:
@@ -190,10 +186,6 @@ int GetPower(int base, int power)
 
 int GuessRandomValueGame()
 {
-	//TODO: Не пишите комментарии к коду в завершении строки. Код должен читаться сверху вниз.
-	//TODO: Без передвижения диагонального скрол-бара.
-	//TODO: Правильнее будет располагать комментарии НАД комментируемой строкой.
-	//done
 	srand(time(NULL)); 
 	cout << "---Game: Guess the Number---" << endl;
 	// угадываемое число
@@ -287,8 +279,6 @@ void ShowArray(double array[], int  size)
 	}
 }
 
-//TODO: Именование метода не корректное. Название метода должно быть отглагольным и говорить о действии.
-//done
 int** CreateMatrixValues(int row, int col, int **matrix)
 {
 	for (int i = 0; i < row; i++)

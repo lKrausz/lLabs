@@ -37,7 +37,7 @@ void SplitFilename(char* source, char* path, char* name, char* extension);
 
 
 //Замена табуляции на пробелы
-//char* ReplaceTabsOnSpaces(char* string);
+char* ReplaceTabsOnSpaces(char* string);
 
 //Замена пробелов на табуляцию
-//char* ReplaceSpacesOnTabs(char* string);
+char* ReplaceSpacesOnTabs(char* string);

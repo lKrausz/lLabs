@@ -207,15 +207,80 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 	
 }
 
-/*
+
 char* ReplaceTabsOnSpaces(char* string)
 {
-
+		char* newString = new char[GetLength(string)];
+		int j = 0;
+		
+		for (int i = 0; i < GetLength(string); j++)
+		{
+			if (string[i] == '\t')
+			{
+				if ((j + 1) % 4 != 0)
+				{
+					newString[j] = ':';
+				}
+				else
+				{
+					newString[j] = ':';
+					i++;
+				}
+			}
+			else
+			{
+				newString[j] = string[i];
+				i++;
+			}
+		}
+		newString[j++] = '\0';
+		return newString;
 }
 
 char* ReplaceSpacesOnTabs(char* string)
 {
+	char* newString = new char[GetLength(string)];
+	int j = 0;
+	int SpacePointer = 0;
+	bool isTabulation = false;
 
-} 
-*/
+	for (int i = 0; i < GetLength(string); i++)
+	{
+		if (string[i] == ':')
+		{
+			SpacePointer = i;
+
+			while (string[SpacePointer] == ':')
+			{
+				if ((SpacePointer + 1) % 4 == 0)
+				{
+					isTabulation = true;
+					break;
+				}
+				SpacePointer++;
+			}
+
+			if (isTabulation)
+			{
+				i = SpacePointer;
+				newString[j] = '\t';
+				isTabulation = false;
+				j++;
+			}
+			else
+			{
+				newString[j] = string[i];
+				j++;
+			}
+		}
+		else
+		{
+			newString[j] = string[i];
+			j++;
+		}
+	}
+
+	newString[j++] = '\0';
+	return newString;
+}
 

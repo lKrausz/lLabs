@@ -1,16 +1,25 @@
 #include <iostream>
 #include <Windows.h>
 #include "LaunchTask4Functions.h"
+#include <iomanip>
 
 void ShowList(List* list)
 {
 	Node* current = list->head;
 	if (list->head == nullptr)
 		return;
-
+	int i = 0;
 	cout << "List:" << endl;
+	cout << setw(10) << left 
+		<< setw(3) << "#"
+		 << setw(11) << "Surname"
+		 << setw(10) << "Name"
+		 << setw(8) << "Sex"
+		 << setw(3) << "Age"
+		 << endl;
 	while (current != nullptr)
 	{
+		cout << i++ << ".";
 		ShowPerson(current->data);
 		current = current->next;
 	} 
