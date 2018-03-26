@@ -1,12 +1,13 @@
-#include <iostream>
+п»ї#include <iostream>
 #include "Labs.h"
-#include "LaunchTask3Functions.h"
-#include "StructPersonFunctions.h"
+#include "Person.h"
+#include "String.h"
+
 
 
 using namespace std;
 
-//Меню
+//РњРµРЅСЋ
 int Menu3()
 {
 	int key;
@@ -43,7 +44,7 @@ int Menu3()
 		{
 		case 1:
 		{
-			char* str = CreateLength();
+			char* str = CreateString();
 			int size = GetLength(str);
 			cout << "String size: " << size << endl;
 			delete[] str;
@@ -94,26 +95,26 @@ int Menu3()
 
 		case 5:
 		{
-			char* string = CreateLength();
+			char* string = CreateString();
 			cout << "Uppercase string: " << Uppercase(string) << endl;
 			delete[] string;
-			//TODO: Утечка памяти
+			//TODO: РЈС‚РµС‡РєР° РїР°РјСЏС‚Рё
 			break;
 		}
 
 
 		case 6:
 		{
-			char* string = CreateLength();
+			char* string = CreateString();
 			cout << "Lowercase string: " << Lowercase(string) << endl;
 			delete[] string;
-			//TODO: Утечка памяти
+			//TODO: РЈС‚РµС‡РєР° РїР°РјСЏС‚Рё
 			break;
 		}
 
 		case 7:
 		{
-			char* source = CreateLength();
+			char* source = CreateString();
 			char* path = new char[20];
 			char* name = new char[20];
 			char* extension = new char[10];
@@ -127,29 +128,29 @@ int Menu3()
 		case 8:
 		{
 			char* string = (char*)"Cake\tis\ta lie!";
-			// Добавил вывод исходной строки, иначе при работе программы нельзя понять, правильно ли она отработала
+			// Р”РѕР±Р°РІРёР» РІС‹РІРѕРґ РёСЃС…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё, РёРЅР°С‡Рµ РїСЂРё СЂР°Р±РѕС‚Рµ РїСЂРѕРіСЂР°РјРјС‹ РЅРµР»СЊР·СЏ РїРѕРЅСЏС‚СЊ, РїСЂР°РІРёР»СЊРЅРѕ Р»Рё РѕРЅР° РѕС‚СЂР°Р±РѕС‚Р°Р»Р°
 			cout << string << endl;
 			cout << ReplaceTabsOnSpaces(string) << endl;
 			char* string1 = (char*)"Cake\t\tis a lie!";
-			// Добавил вывод исходной строки, иначе при работе программы нельзя понять, правильно ли она отработала
+			// Р”РѕР±Р°РІРёР» РІС‹РІРѕРґ РёСЃС…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё, РёРЅР°С‡Рµ РїСЂРё СЂР°Р±РѕС‚Рµ РїСЂРѕРіСЂР°РјРјС‹ РЅРµР»СЊР·СЏ РїРѕРЅСЏС‚СЊ, РїСЂР°РІРёР»СЊРЅРѕ Р»Рё РѕРЅР° РѕС‚СЂР°Р±РѕС‚Р°Р»Р°
 			cout << string1 << endl;
 			cout << ReplaceTabsOnSpaces(string1) << endl;
-			//TODO: утечка памяти
+			//TODO: СѓС‚РµС‡РєР° РїР°РјСЏС‚Рё
 			break;
 		}
 
 		case 9:
 		{
 			char* string = (char*)"Cake::::is::a:lie!";
-			// Добавил вывод исходной строки, иначе при работе программы нельзя понять, правильно ли она отработала
+			// Р”РѕР±Р°РІРёР» РІС‹РІРѕРґ РёСЃС…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё, РёРЅР°С‡Рµ РїСЂРё СЂР°Р±РѕС‚Рµ РїСЂРѕРіСЂР°РјРјС‹ РЅРµР»СЊР·СЏ РїРѕРЅСЏС‚СЊ, РїСЂР°РІРёР»СЊРЅРѕ Р»Рё РѕРЅР° РѕС‚СЂР°Р±РѕС‚Р°Р»Р°
 			cout << string << endl;
 			cout << ReplaceSpacesOnTabs(string) << endl;
 			char* string1 = (char*)"Cake::::is::::a:lie! ";
-			// Добавил вывод исходной строки, иначе при работе программы нельзя понять, правильно ли она отработала
+			// Р”РѕР±Р°РІРёР» РІС‹РІРѕРґ РёСЃС…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё, РёРЅР°С‡Рµ РїСЂРё СЂР°Р±РѕС‚Рµ РїСЂРѕРіСЂР°РјРјС‹ РЅРµР»СЊР·СЏ РїРѕРЅСЏС‚СЊ, РїСЂР°РІРёР»СЊРЅРѕ Р»Рё РѕРЅР° РѕС‚СЂР°Р±РѕС‚Р°Р»Р°
 			cout << string1 << endl;
 			cout << ReplaceSpacesOnTabs(string1) << endl;
 			break;
-			//TODO: Утечка памяти
+			//TODO: РЈС‚РµС‡РєР° РїР°РјСЏС‚Рё
 		}
 
 		case 10:
