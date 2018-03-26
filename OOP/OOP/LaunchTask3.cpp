@@ -97,6 +97,7 @@ int Menu3()
 			char* string = CreateLength();
 			cout << "Uppercase string: " << Uppercase(string) << endl;
 			delete[] string;
+			//TODO: ”течка пам€ти
 			break;
 		}
 
@@ -106,6 +107,7 @@ int Menu3()
 			char* string = CreateLength();
 			cout << "Lowercase string: " << Lowercase(string) << endl;
 			delete[] string;
+			//TODO: ”течка пам€ти
 			break;
 		}
 
@@ -125,19 +127,29 @@ int Menu3()
 		case 8:
 		{
 			char* string = (char*)"Cake\tis\ta lie!";
+			// ƒобавил вывод исходной строки, иначе при работе программы нельз€ пон€ть, правильно ли она отработала
+			cout << string << endl;
 			cout << ReplaceTabsOnSpaces(string) << endl;
 			char* string1 = (char*)"Cake\t\tis a lie!";
+			// ƒобавил вывод исходной строки, иначе при работе программы нельз€ пон€ть, правильно ли она отработала
+			cout << string1 << endl;
 			cout << ReplaceTabsOnSpaces(string1) << endl;
+			//TODO: утечка пам€ти
 			break;
 		}
 
 		case 9:
 		{
 			char* string = (char*)"Cake::::is::a:lie!";
+			// ƒобавил вывод исходной строки, иначе при работе программы нельз€ пон€ть, правильно ли она отработала
+			cout << string << endl;
 			cout << ReplaceSpacesOnTabs(string) << endl;
 			char* string1 = (char*)"Cake::::is::::a:lie! ";
+			// ƒобавил вывод исходной строки, иначе при работе программы нельз€ пон€ть, правильно ли она отработала
+			cout << string1 << endl;
 			cout << ReplaceSpacesOnTabs(string1) << endl;
 			break;
+			//TODO: ”течка пам€ти
 		}
 
 		case 10:

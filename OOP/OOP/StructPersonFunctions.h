@@ -1,6 +1,6 @@
 #pragma once
 
-
+//TODO: Убрать слова struct и functions из названия. Просто Person - и так будет понятно, что здесь Person и функции для работы с ним. Остальные слова в названии - мусор
 using namespace std;
 
 enum Gender
@@ -11,6 +11,7 @@ enum Gender
 
 struct Person
 {
+	//TODO: Переходили бы уже на использование строк string. Массив символов это уже атавизм
 	char Surname[30];
 	char Name[20];
 	Gender Sex;
@@ -23,5 +24,6 @@ void ShowPerson(Person person);
 Person ReadPerson();
 //Рандомные данные
 Person ReadRandomPerson();
+//TODO: Если сделать реализацию на string вместо char[], не надо будет писать такие функции
 //Перенос const char строки в строку структуры Person
 void CopyCharString(char* structString, const char* constString);

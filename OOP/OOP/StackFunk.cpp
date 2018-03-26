@@ -1,8 +1,10 @@
+//TODO: Переименовать файл в соответствии с заголовочным
 #include <iostream>
 #include "Stack.h"
 
 using namespace std;
 
+//TODO: До этого все интерфейсные функции выносились в отдельные файлы. Почему здесь всё в одном?
 int MenuStack(Stack* stack)
 {
 	int key;
@@ -86,6 +88,7 @@ int MenuStack(Stack* stack)
 Stack* InitStack (int size)
 {
 	Stack* stack = new Stack();
+	//TODO: А почему стек в принципе ограничен по размеру bufferSize?
 	stack->bufferSize = size;
 	stack->buffer = new int[stack->bufferSize];
 	stack->top = 0;

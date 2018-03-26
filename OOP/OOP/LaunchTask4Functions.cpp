@@ -1,8 +1,10 @@
+//TODO: Переименовать файл согласно заголовочному (после преименования заголовочного)
 #include <iostream>
 #include <Windows.h>
 #include "LaunchTask4Functions.h"
 #include <iomanip>
 
+//TODO: Продублировать комментарии из заголовочного файла
 void ShowList(List* list)
 {
 	Node* current = list->head;
@@ -26,11 +28,13 @@ void ShowList(List* list)
 	cout << endl;
 };
 
-
+//TODO: лишние пустые строки между функциями. Должна быть только одна
 int GetListLength(List* list)
 {
 	Node* count = list->head;
+	//TODO: локальные переменные с маленькой буквы
 	int ListSize = 0;
+	//TODO: Если использовать цикл while вместо do-while, можно избавиться от этого условия
 	if (list->head == nullptr) return 0;
 	do
 	{
@@ -45,12 +49,14 @@ void InsertElement(List* list, Person data, int index)
 {
 	if (index > GetListLength(list) || index < 0)
 	{
+		//TODO: Никакого вывода текста. Нужно выкидывать исключения и ловить их в точке вызова
 		cout << "Error. Incorrect index." << endl;
 		return;
 	}
 
 	Node* newNode = new Node();
 	newNode->data = data;
+	//TODO: не нужные строки, так как сейчас это делается автоматически при создании Node (см. реализацию Node)
 	newNode->next = nullptr;
 	newNode->prev = nullptr;
 
@@ -92,6 +98,7 @@ void DeleteElement(List* list, int index)
 
 	int i = 0;
 	Node* node = list->head;
+	//TODO: А если индекс больше количества элементов списка?
 	while (i != index && node != NULL)
 	{
 		++i;
@@ -134,7 +141,7 @@ void DeleteElement(List* list, int index)
 	delete node;
 }
 
-
+//TODO: переименовать функцию (см. заголовочный файл)
 Person* GetPersonAderess(List* list, int index)
 {
 	int count = 0;
@@ -148,3 +155,5 @@ Person* GetPersonAderess(List* list, int index)
 	if (count > index) return NULL;
 	return &node->data;
 }
+
+//TODO: Еще нужна функция Clear() - очистка всего списка

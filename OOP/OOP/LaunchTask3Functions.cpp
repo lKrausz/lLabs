@@ -1,9 +1,11 @@
+//TODO: Переименовать файл в соответствии с заголовочным файлом (после переименования заголовочного)
 #include <stdio.h>
 #include <iostream>
 #include "LaunchTask3Functions.h"
 
 using namespace std;
 
+//TODO: Почему функция называется "Создать длину"? Длину или строку? Создать или прочесть с клавиатуры?
 char* CreateLength()
 {
 	int size = 100;
@@ -14,6 +16,7 @@ char* CreateLength()
 	return str;
 }
 
+//TODO: Продублировать комментарии из заголовочного файла - сейчас почему-то не показываются во всплывающих подсказках
 int GetLength(char* str)
 {
 	int lengthString = 0;
@@ -42,8 +45,10 @@ char* Concatenate(char* string1, char* string2)
 	return result;
 }
 
+//TODO: Функция должна вернуть подстроку, а не вывести её на экран
 char* GetSubstring(char* string, int startIndex, int charCount)
 {
+	//TODO: Длинное сложное условие под if - для таких лучше оставлять комментарий
 	if (((GetLength(string) - startIndex) < charCount) || (startIndex < 0) || (charCount < 0))
 	{
 		cout << "Error. Incorrect value." << endl;
@@ -91,6 +96,7 @@ int FindSubstring(char* string, char* substring)
 	return -1;
 }
 
+//TODO: На вход приходит массив из ровно 10 символов - так передавать строки неправильно, надо через указатель
 void TestSubstringFind(char* string, char* substring, char testSubstring[10])
 {
 	int index;
@@ -101,7 +107,9 @@ void TestSubstringFind(char* string, char* substring, char testSubstring[10])
 
 char* Uppercase(char* string)
 {
+	//TODO: А если входная строка окажется больше 200 символов?
 	char* newString = new char[200];
+	//TODO: Зачем сначала копировать всю строку, если можно сразу записывать в новую строку приведенные к верхнему кейсу символы? Избавиться от первого цикла
 	for (int i = 0; i < GetLength(string); i++)
 	{
 		newString[i] = string[i];
@@ -110,6 +118,7 @@ char* Uppercase(char* string)
 
 	for (int i = 0; i < GetLength(newString); i++)
 	{
+		//TODO: Магические числа 93, 122 и 32 - избавиться, так как читаемость кода плохая
 		if (newString[i] >= 97 && newString[i] <= 122)
 		{
 			newString[i] -= 32;
@@ -120,7 +129,9 @@ char* Uppercase(char* string)
 
 char* Lowercase(char* string)
 {
+	//TODO: Аналогично предыдущей функции
 	char* newString = new char[200];
+	//TODO: Аналогично предыдущей функции
 	for (int i = 0; i < GetLength(string); i++)
 	{
 		newString[i] = string[i];
@@ -129,6 +140,7 @@ char* Lowercase(char* string)
 
 	for (int i = 0; i < GetLength(newString); i++)
 	{
+		//TODO: Аналогично предыдущей функции
 		if (newString[i] >= 65 && newString[i] <= 90)
 		{
 			newString[i] += 32;
@@ -137,6 +149,8 @@ char* Lowercase(char* string)
 	return newString;
 }
 
+//TODO: Зачем передавать size, если его можно вычислить внутри функции - избавиться от лишнего параметра
+//TODO: В одних функциях length, в других - size. Одни и те же сущности надо именовать одинаково. Переименовать
 //Получение обратной(отзеркаленной) строки
 char* RevertString(char* string, int size)
 {
@@ -152,6 +166,7 @@ char* RevertString(char* string, int size)
 	return newString;
 }
 
+//TODO: Куча входных параметров - судя по названию должна возвращаться строка, а возвращается число - что за адская функция? Зачем она вообще нужна?
 //Разбиение строки source на части (путь, имя, расширение)
 int GetSourcePart(char* source, char* partString, char symbol, const char partName[30], int size)
 {
@@ -177,18 +192,21 @@ int GetSourcePart(char* source, char* partString, char symbol, const char partNa
 		partString[i] = '\0';
 	}
 	partString = RevertString(partString, GetLength(partString) - 1);
+	//TODO: Функции программной логики не должны ничего выводить на экран. Вывод на экран должен быть в интерфейсных функциях
 	cout << partName << partString << endl;
+	//TODO: Утечка памяти
 	return size;
 }
 
 void SplitFilename(char* source, char* path, char* name, char* extension)
 {
 	int size = GetLength(source);
-	
+	//TODO: Для "нарезания" строк уже есть готовые функции GetSubstring, FindSubstring и др. Функция GetSourcePart не нужна
 	size = GetSourcePart(source, extension, '.', "Extension: ", size);
 	if (size == NULL)
 	{
 		size = GetLength(source);
+		//TODO: Никакого вывода в функциях логики! Вывод должен быть только в интерфейсных функциях!
 		cout << "Extension: NULL" << endl;
 	}
 	size = GetSourcePart(source, name, '\\', "Name: ", size);
@@ -207,16 +225,19 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 	
 }
 
-
+//TODO: лишние пустые строки между функциями
+//TODO: Да, функция работает неверно. При выводе строк на экран монитора, слова должны начинаться с одних и тех же позиций, а вместо некоторых пробельных символов должны отображаться двоеточия
 char* ReplaceTabsOnSpaces(char* string)
 {
 		char* newString = new char[GetLength(string)];
 		int j = 0;
 		
+		//TODO: цикл по i, а увеличивается j - неправильно!
 		for (int i = 0; i < GetLength(string); j++)
 		{
 			if (string[i] == '\t')
 			{
+				//TODO: Вместо следующего if-else должен быть 1 цикл
 				if ((j + 1) % 4 != 0)
 				{
 					newString[j] = ':';
@@ -237,6 +258,7 @@ char* ReplaceTabsOnSpaces(char* string)
 		return newString;
 }
 
+//TODO: Да, функция работает неверно. При выводе строк на экран монитора, слова должны начинаться с одних и тех же позиций, а вместо некоторых двоеточий должны отображаться пробельные символы
 char* ReplaceSpacesOnTabs(char* string)
 {
 	char* newString = new char[GetLength(string)];

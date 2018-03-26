@@ -2,8 +2,8 @@
 #include <ctime>
 #include <random>
 #include "StructPersonFunctions.h"
-#include <iomanip>
-
+#include <iomanip> //TODO: Подписать комментарий, зачем подключается это библиотека
+//TODO: Переименовать файл в соответствии с заголовочным файлом
 
 //Ввод данных
 Person ReadPerson()
@@ -17,6 +17,8 @@ Person ReadPerson()
 		<< "0 for female "
 		<< "1 for male: ";
 
+	//TODO: Зациклить ввод пола до ввода правильного значения
+	// Сейчас можно ввести в качестве пола, например, 15 - и программа отработает без инициализации пола
 	int sex;
 	cin >> sex;
 	switch (sex)
@@ -44,8 +46,10 @@ Person ReadPerson()
 	return person;
 }
 
+//TODO: Продублировать комментарии из заголовочного файла - сейчас наведение мыши не показывает комментарий во всплывающей подсказке
 void ShowPerson(Person person)
 {
+	//TODO: Почему setw(11), если на фамилию выделяется 30 символов? Как это отработает с длинными фамилиями?
 	cout << setw(11) << person.Surname << setw(10) << person.Name;
 	switch (person.Sex)
 	{
@@ -69,6 +73,7 @@ void CopyCharString(char* structString, const char* constString)
 	structString[i] = '\0';
 }
 
+//TODO: Почему Read? Read - это когда с клавиатуры или из файла. Здесь же Get или Create/Generate
 Person ReadRandomPerson()
 {
 	Person person;
