@@ -118,24 +118,22 @@
     <ClCompile Include="LaunchTask1.cpp" />
     <ClCompile Include="LaunchTask2.cpp" />
     <ClCompile Include="LaunchTask2Functions.cpp" />
-    <ClCompile Include="String.cpp" />
+    <ClCompile Include="LaunchTask3Functions.cpp" />
     <ClCompile Include="LaunchTask4.cpp" />
-    <ClCompile Include="List.cpp" />
+    <ClCompile Include="LaunchTask4Functions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LaunchTask3.cpp" />
-    <ClCompile Include="Stack.cpp" />
-    <ClCompile Include="LaunchTask5.cpp" />
+    <ClCompile Include="StackFunk.cpp" />
+    <ClCompile Include="StructPersonFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ClassPerson.h" />
     <ClInclude Include="Labs.h" />
     <ClInclude Include="LaunchTask1Functions.h" />
     <ClInclude Include="LaunchTask2Functions.h" />
-    <ClInclude Include="PersonList.h" />
-    <ClInclude Include="String.h" />
-    <ClInclude Include="List.h" />
+    <ClInclude Include="LaunchTask3Functions.h" />
+    <ClInclude Include="LaunchTask4Functions.h" />
     <ClInclude Include="Stack.h" />
-    <ClInclude Include="Person.h" />
+    <ClInclude Include="StructPersonFunctions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
