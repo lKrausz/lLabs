@@ -13,36 +13,51 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Lab 1-2">
+      <UniqueIdentifier>{637c082a-8de2-46d5-9bdd-3c9c2560dc5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Lab 3-4">
+      <UniqueIdentifier>{f2e39477-087f-44f2-81ee-f7e679dc3f48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="LaunchTask1.cpp">
+    <ClCompile Include="LaunchTask5.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="PersonList.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LaunchTask1.cpp">
+      <Filter>Исходные файлы\Lab 1-2</Filter>
     </ClCompile>
     <ClCompile Include="LaunchTask2.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Lab 1-2</Filter>
     </ClCompile>
     <ClCompile Include="LaunchTask2Functions.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Lab 1-2</Filter>
     </ClCompile>
     <ClCompile Include="LaunchTask3.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="LaunchTask3Functions.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Lab 3-4</Filter>
     </ClCompile>
     <ClCompile Include="LaunchTask4.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Lab 3-4</Filter>
     </ClCompile>
-    <ClCompile Include="LaunchTask4Functions.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="List.cpp">
+      <Filter>Исходные файлы\Lab 3-4</Filter>
     </ClCompile>
-    <ClCompile Include="StructPersonFunctions.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="Person.cpp">
+      <Filter>Исходные файлы\Lab 3-4</Filter>
     </ClCompile>
-    <ClCompile Include="StackFunk.cpp">
+    <ClCompile Include="Stack.cpp">
+      <Filter>Исходные файлы\Lab 3-4</Filter>
+    </ClCompile>
+    <ClCompile Include="String.cpp">
+      <Filter>Исходные файлы\Lab 3-4</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassPerson.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,23 +65,29 @@
     <ClInclude Include="Labs.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="LaunchTask2Functions.h">
+    <ClInclude Include="ClassPerson.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="PersonList.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="LaunchTask1Functions.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Исходные файлы\Lab 1-2</Filter>
     </ClInclude>
-    <ClInclude Include="LaunchTask3Functions.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="LaunchTask2Functions.h">
+      <Filter>Исходные файлы\Lab 1-2</Filter>
     </ClInclude>
-    <ClInclude Include="LaunchTask4Functions.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="List.h">
+      <Filter>Исходные файлы\Lab 3-4</Filter>
     </ClInclude>
-    <ClInclude Include="StructPersonFunctions.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="Person.h">
+      <Filter>Исходные файлы\Lab 3-4</Filter>
     </ClInclude>
     <ClInclude Include="Stack.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Исходные файлы\Lab 3-4</Filter>
+    </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>Исходные файлы\Lab 3-4</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

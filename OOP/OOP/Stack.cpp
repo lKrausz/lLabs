@@ -1,10 +1,12 @@
-//TODO: Переименовать файл в соответствии с заголовочным
+п»ї//TODO: РџРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ С„Р°Р№Р» РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ Р·Р°РіРѕР»РѕРІРѕС‡РЅС‹Рј
+//done
 #include <iostream>
 #include "Stack.h"
 
 using namespace std;
 
-//TODO: До этого все интерфейсные функции выносились в отдельные файлы. Почему здесь всё в одном?
+//TODO: Р”Рѕ СЌС‚РѕРіРѕ РІСЃРµ РёРЅС‚РµСЂС„РµР№СЃРЅС‹Рµ С„СѓРЅРєС†РёРё РІС‹РЅРѕСЃРёР»РёСЃСЊ РІ РѕС‚РґРµР»СЊРЅС‹Рµ С„Р°Р№Р»С‹. РџРѕС‡РµРјСѓ Р·РґРµСЃСЊ РІСЃС‘ РІ РѕРґРЅРѕРј?
+//РїРѕС‚РѕРјСѓ С‡С‚Рѕ РєРѕРїРёРїР°СЃС‚Р°
 int MenuStack(Stack* stack)
 {
 	int key;
@@ -85,10 +87,11 @@ int MenuStack(Stack* stack)
 
 };
 
-Stack* InitStack (int size)
+Stack* InitStack(int size)
 {
 	Stack* stack = new Stack();
-	//TODO: А почему стек в принципе ограничен по размеру bufferSize?
+	//TODO: Рђ РїРѕС‡РµРјСѓ СЃС‚РµРє РІ РїСЂРёРЅС†РёРїРµ РѕРіСЂР°РЅРёС‡РµРЅ РїРѕ СЂР°Р·РјРµСЂСѓ bufferSize?
+	//РїРѕС‚РѕРјСѓ С‡С‚Рѕ РєРѕРїРёРїР°СЃС‚Р°
 	stack->bufferSize = size;
 	stack->buffer = new int[stack->bufferSize];
 	stack->top = 0;
@@ -119,7 +122,7 @@ void Delete(Stack* stack)
 	delete[] stack->buffer;
 	delete stack;
 };
-void ReSize (Stack* stack, int newSize)
+void ReSize(Stack* stack, int newSize)
 {
 	int* newBuffer = new int[newSize];;
 	for (int i = 0; i < stack->bufferSize; i++)
@@ -132,7 +135,7 @@ void ReSize (Stack* stack, int newSize)
 };
 void StackShow(Stack* stack)
 {
-	for (int i = stack->top - 1; i >= 0 ; i--)
+	for (int i = stack->top - 1; i >= 0; i--)
 	{
 		std::cout << (stack->buffer[i]) << endl;
 	}

@@ -1,13 +1,13 @@
-#include <iostream>
+ο»Ώ#include <iostream>
 #include "Labs.h"
-#include "LaunchTask4Functions.h"
 #include "Stack.h"
+#include "List.h"
 
 
 using namespace std;
 
 
-//Μενώ
+//ΠΠµΠ½Ρ
 int Menu4(List* list)
 {
 	int key;
@@ -24,6 +24,7 @@ int Menu4(List* list)
 				<< "4. Remove person;" << endl
 				<< "5. Stack;" << endl
 				<< "6. Person Adress;" << endl
+				<< "7. Clear list;" << endl
 				<< "0. Exit." << endl;
 
 			cin >> key;
@@ -51,7 +52,7 @@ int Menu4(List* list)
 		{
 			cout << "Enter the index of element:\n";
 			cin >> index;
-			InsertElement(list, ReadRandomPerson(), index);
+			InsertElement(list, CreateRandomPerson(), index);
 			ShowList(list);
 			break;
 		}
@@ -93,7 +94,14 @@ int Menu4(List* list)
 		{
 			cout << "Enter the index of element:\n";
 			cin >> index;
-			cout << "Adress: " << GetPersonAderess(list, index) << endl;
+			cout << "Adress: " << GetPerson(list, index) << endl;
+			break;
+		}
+
+		case 7:
+		{
+			Clear(list);
+			cout << "List cleared.";
 			break;
 		}
 
@@ -122,5 +130,6 @@ void LaunchTask4()
 	int key = Menu4(list);
 	cout << key << "\n";
 	system("pause");
+	Clear(list);
 	delete list;
 }
