@@ -2,6 +2,7 @@
 #include "Labs.h"
 #include "ClassPerson.h"
 #include "PersonList.h"
+#include <conio.h> // for _getch in case 8.
 
 using namespace std;
 
@@ -122,16 +123,16 @@ int Menu5()
 
 		case 8:
 		{
+			cout << "First step. Add 2 lists." << endl;
 			PersonList list1;
 			PersonList list2;
 			Person* person = person->GetRandomPerson();
 			list1.Add(person);
 			person = person->GetRandomPerson();
-
 			list1.Add(person);
 			person = person->GetRandomPerson();
 			list1.Add(person);
-			cout << "list 1:" << endl;
+			cout << "---list 1---" << endl;
 			list1.ShowList(&list);
 
 			person = person->GetRandomPerson();
@@ -140,7 +141,35 @@ int Menu5()
 			list2.Add(person);
 			person = person->GetRandomPerson();
 			list2.Add(person);
-			cout << "list 2:" << endl;
+			cout << "---list 2---" << endl;
+			list2.ShowList(&list);
+
+			cout << "Press any key" << endl;
+			key = _getch();
+			cout << "Second step: copy person 2(list1) to list2 end" << endl;
+			person = list1.Find(2);
+			list2.Add(person);
+			cout << "---list 1---" << endl;
+			list1.ShowList(&list);
+			cout << "---list 2---" << endl;
+			list2.ShowList(&list);
+
+			cout << "Press any key" << endl;
+			key = _getch();
+			cout << "Third step: delete person 2 from list1" << endl;
+			list1.RemoveAt(2);
+			cout << "---list 1---" << endl;
+			list1.ShowList(&list);
+			cout << "---list 2---" << endl;
+			list2.ShowList(&list);
+
+			cout << "Press any key" << endl;
+			key = _getch();
+			cout << "Last step: Clear list2" << endl;
+			list2.Clear();
+			cout << "---list 1---" << endl;
+			list1.ShowList(&list);
+			cout << "---list 2---" << endl;
 			list2.ShowList(&list);
 			break;
 		}

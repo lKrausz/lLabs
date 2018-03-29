@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include "Labs.h"
 #include <iostream>
+#include <ctime>
 
 
 using namespace std;
@@ -78,6 +79,7 @@ int Menu()
 
 int main()
 {
+	srand(time(NULL));
 	//TODO: Во всей программе не реализована проверка на вводимые значения!
 	int key = Menu();
 	cout << key << endl;

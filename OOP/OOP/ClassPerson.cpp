@@ -72,7 +72,6 @@ Person* Person::GetRandomPerson()
 	string surname;
 	string name;
 	enum Sex sex;
-	srand(time(NULL));
 	int age = 1 + rand() % 100;
 	int initSex = rand() % 2;
 	switch (initSex)
