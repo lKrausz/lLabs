@@ -9,7 +9,7 @@
 using namespace std;
 
 //Μενώ
-int Menu5()
+int Menu6()
 {
 	int key;
 	PersonList list;
@@ -48,7 +48,16 @@ int Menu5()
 		{
 		case 1:
 		{
-			ReadPerson(name, surname, age, sex);
+			cout << "Enter surname: ";
+			cin >> surname;
+			cout << "Enter name: ";
+			cin >> name;
+			cout << "Enter sex: " << endl
+				<< "0 for female " << endl
+				<< "1 for male: " << endl;
+			cin >> sex;
+			cout << "Enter age: " << endl;
+			cin >> age;
 			if (age < 18)
 			{
 				string school;
@@ -154,8 +163,8 @@ int Menu5()
 }
 
 
-void LaunchTask5()
+void LaunchTask6()
 {
-	int key = Menu5();
+	int key = Menu6();
 	cout << key << "\n";
 }

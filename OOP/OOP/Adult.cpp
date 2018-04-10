@@ -1,17 +1,12 @@
 #include "Adult.h"
 #include <iostream>
 
-
-Adult::~Adult()
-{
-}
-
 Adult* ReadAdult(string name, string surname, int age, int sex)
 {
 	string workPlace;
 	int marriedCheck;
 	Adult* adult = new Adult(name, surname, age, sex);
-	cout << "Enter workplace or 0 if you don'r work" << endl;
+	cout << "Enter workplace or 0 if you don't work" << endl;
 	cin >> workPlace;
 	adult->SetWorkPlace(workPlace);
 	do
@@ -22,7 +17,16 @@ Adult* ReadAdult(string name, string surname, int age, int sex)
 		{
 		case 1:
 		{
-			ReadPerson(surname, name, age, sex);
+			cout << "Enter surname: ";
+			cin >> surname;
+			cout << "Enter name: ";
+			cin >> name;
+			cout << "Enter sex: " << endl
+				<< "0 for female " << endl
+				<< "1 for male: " << endl;
+			cin >> sex;
+			cout << "Enter age: " << endl;
+			cin >> age;
 			Adult* newAdult = new Adult(name, surname, age, sex);
 			cout << "Enter workplace: " << endl;
 			cin >> workPlace;

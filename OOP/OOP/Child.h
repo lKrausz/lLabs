@@ -11,7 +11,7 @@ public:
 	{
 		
 	}
-	~Child();
+
 	virtual void SetAge(int age)
 	{
 		if (age > 18)

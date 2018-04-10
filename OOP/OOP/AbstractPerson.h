@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include "Errors.h"
 #include "ClassPerson.h"
 
 using namespace std;
@@ -16,8 +15,7 @@ protected:
 	Sex _sex;
 
 public:
-	AbstractPerson();
-	~AbstractPerson();
+
 	void SetName(string name)
 	{
 		_name = name;
@@ -69,5 +67,4 @@ public:
 
 };
 
-AbstractPerson* ReadPerson(string surname, string name, int age, int sex);
 void ShowPerson(AbstractPerson* person);

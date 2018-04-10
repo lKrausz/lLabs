@@ -5,20 +5,6 @@
 using namespace std;
 class IncorrectSexValue {};
 
-AbstractPerson* ReadPerson(string surname, string name, int age, int sex)
-{
-	cout << "Enter surname: ";
-	cin >> surname;
-	cout << "Enter name: ";
-	cin >> name;
-	cout << "Enter sex: " << endl
-		<< "0 for female " << endl
-		<< "1 for male: " << endl;
-	cin >> sex;
-	cout << "Enter age: " << endl;
-	cin >> age;
-}
-
 void ShowPerson(AbstractPerson* person)
 {
 	cout << setw(20) << person->GetSurname()
