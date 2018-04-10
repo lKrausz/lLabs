@@ -1,6 +1,7 @@
 #pragma once
 #include "PersonList.h"
-#include "ClassPerson.h"
+#include <iomanip> // satw
+#include <iostream>
 
 
 void PersonList::Add(Person* person)

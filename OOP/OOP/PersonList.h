@@ -23,6 +23,16 @@ public:
 		PersonListItem* _tail;
 		int _count;
 	}
+	~PersonList()
+	{
+		while (_head != NULL)
+		{
+			PersonListItem *next = _head->next;
+			delete _head->data;
+			delete _head;
+			_head = next;
+		}
+	}
 	//добавить человека в список
 	void Add(Person* person); 
 	//найти человека по указанному индексу

@@ -19,15 +19,12 @@
     <Filter Include="Исходные файлы\Lab 3-4">
       <UniqueIdentifier>{f2e39477-087f-44f2-81ee-f7e679dc3f48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Lab 5">
+      <UniqueIdentifier>{255c53b0-4857-46a6-838c-6a3e54dbdf67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="LaunchTask5.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="PersonList.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="LaunchTask1.cpp">
@@ -57,18 +54,30 @@
     <ClCompile Include="String.cpp">
       <Filter>Исходные файлы\Lab 3-4</Filter>
     </ClCompile>
+    <ClCompile Include="Child.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="ClassPerson.cpp">
+      <Filter>Исходные файлы\Lab 5</Filter>
+    </ClCompile>
+    <ClCompile Include="LaunchTask5.cpp">
+      <Filter>Исходные файлы\Lab 5</Filter>
+    </ClCompile>
+    <ClCompile Include="PersonList.cpp">
+      <Filter>Исходные файлы\Lab 5</Filter>
+    </ClCompile>
+    <ClCompile Include="LaunchTask6.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractPerson.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Adult.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Labs.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ClassPerson.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="PersonList.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="LaunchTask1Functions.h">
@@ -88,6 +97,21 @@
     </ClInclude>
     <ClInclude Include="String.h">
       <Filter>Исходные файлы\Lab 3-4</Filter>
+    </ClInclude>
+    <ClInclude Include="Child.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassPerson.h">
+      <Filter>Исходные файлы\Lab 5</Filter>
+    </ClInclude>
+    <ClInclude Include="PersonList.h">
+      <Filter>Исходные файлы\Lab 5</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractPerson.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Adult.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

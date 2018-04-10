@@ -1,5 +1,7 @@
 #pragma once
 #include "ClassPerson.h"
+#include <iostream>
+#include <iomanip> // for satw 
 
 Person* ReadPerson()
 {
@@ -67,7 +69,7 @@ void ShowPerson(Person* person)
 	cout << setw(3) << person->GetAge() << endl;
 }
 
-Person* Person::GetRandomPerson()
+Person* GetRandomPerson()
 {
 	string surname;
 	string name;
@@ -76,24 +78,24 @@ Person* Person::GetRandomPerson()
 	int initSex = rand() % 2;
 	switch (initSex)
 	{
-		case 1:
-		{
-			sex = male;
-			const char *maleSurname[] = { "Walter", "Krause", "Zimmer", "Regenherz", "Von-Webber" };
-			surname = maleSurname[rand() % 5];
-			const char *maleName[] = { "Johann", "Walter", "Ludwig", "Karl", "Ulrich" };
-			name = maleName[rand() % 5];
-			break;
-		}
-		case 0:
-		{
-			sex = female;
-			const char *femaleSurname[] = { "Marinelli", "Alfieri", "Bellini", "Ferrario", "Cortese" };
-			surname = femaleSurname[rand() % 5];
-			const char *femaleName[] = { "Annabella", "Ottavia", "Laura", "Alessia", "Chiara" };
-			name = femaleName[rand() % 5];
-			break;
-		}
+	case 1:
+	{
+		sex = male;
+		const char *maleSurname[] = { "Walter", "Krause", "Zimmer", "Regenherz", "Von-Webber" };
+		surname = maleSurname[rand() % 5];
+		const char *maleName[] = { "Johann", "Walter", "Ludwig", "Karl", "Ulrich" };
+		name = maleName[rand() % 5];
+		break;
+	}
+	case 0:
+	{
+		sex = female;
+		const char *femaleSurname[] = { "Marinelli", "Alfieri", "Bellini", "Ferrario", "Cortese" };
+		surname = femaleSurname[rand() % 5];
+		const char *femaleName[] = { "Annabella", "Ottavia", "Laura", "Alessia", "Chiara" };
+		name = femaleName[rand() % 5];
+		break;
+	}
 	}
 	Person* person = new Person(name, surname, age, sex);
 	return person;

@@ -47,7 +47,6 @@ int GetListLength(List* list)
 	return listSize;
 }
 
-
 void InsertElement(List* list, Person data, int index)
 {
 	if (index > GetListLength(list) || index < 0)
@@ -89,7 +88,6 @@ void InsertElement(List* list, Person data, int index)
 		current = newNode;
 	}
 }
-
 
 void DeleteElement(List* list, int index)
 {

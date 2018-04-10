@@ -1,7 +1,5 @@
 ﻿#pragma once
 #include <string>
-#include <iostream>
-#include <iomanip>
 
 using namespace std;
 
@@ -13,61 +11,61 @@ enum Sex
 
 class Person
 {
-	string Name;
-	string Surname;
-	int Age;
-	Sex Sex;
+	string _name;
+	string _surname;
+	int _age;
+	Sex _sex;
 public:
 	Person(string name, string surname, int age, enum Sex sex)
 	{
-		Name = name;
-		Surname = surname;
-		Age = age;
-		Sex = sex;
+		SetName(name);
+		SetSurname(surname);
+		SetAge(age);
+		SetSex(sex);
 	}
-
 	void SetName(string name)
 	{
-		Name = name;
+		_name = name;
 	}
 
 	void SetSurname(string surname)
 	{
-		Surname = surname;
+		_surname = surname;
 	}
 
 	void SetAge(int age)
 	{
-		Age = age;
+		_age = age;
 	}
 
 	void SetSex(enum Sex sex)
 	{
-		Sex = sex;
+		_sex = sex;
 	}
 
 	string GetName()
 	{
-		return Name;
+		return _name;
 	}
 
 	string GetSurname()
 	{
-		return Surname;
+		return _surname;
 	}
 
 	int GetAge()
 	{
-		return Age;
+		return _age;
 	}
 
 	int GetSex()
 	{
-		return Sex;
+		return _sex;
 	}
 
-	static Person* GetRandomPerson();
+	
 };
 
+Person* GetRandomPerson();
 Person* ReadPerson();
 void ShowPerson(Person* person);

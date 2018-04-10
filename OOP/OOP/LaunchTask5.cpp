@@ -17,7 +17,7 @@ int Menu5()
 		{
 			cout << "\t Choose next step:" << endl << endl
 				<< "1. Add Person;" << endl
-				<< "1. Add Random Person;" << endl
+				<< "2. Add Random Person;" << endl
 				<< "3. Find Person with Index;" << endl
 				<< "4. Get Person Index;" << endl
 				<< "5. Remove Person;" << endl
@@ -45,14 +45,17 @@ int Menu5()
 			Person* person = ReadPerson();
 			list.Add(person);
 			list.ShowList(&list);
+			delete person;
 			break;
 		}
 
 		case 2:
 		{
-			Person* person = person->GetRandomPerson();
+			Person *person = GetRandomPerson();
 			list.Add(person);
 			list.ShowList(&list);
+			//remove
+			delete person;
 			break;
 		}
 
@@ -70,6 +73,7 @@ int Menu5()
 				{
 					ShowPerson(person);
 				}
+			delete person;
 			break;
 		}
 
@@ -85,6 +89,7 @@ int Menu5()
 			{
 				cout << "Index: " << index << endl;
 			}
+			delete person;
 			break;
 		}
 
@@ -104,6 +109,7 @@ int Menu5()
 				list.RemoveAt(index);
 				list.ShowList(&list);
 			}
+			delete person;
 			break;
 		}
 
@@ -114,7 +120,6 @@ int Menu5()
 			break;
 		}
 
-
 		case 7:
 		{
 			cout << "List size: " << list.GetCount() << endl;
@@ -123,30 +128,30 @@ int Menu5()
 
 		case 8:
 		{
-			cout << "First step. Add 2 lists." << endl;
+			cout << "First step. Add 2 lists." << endl << endl;
 			PersonList list1;
 			PersonList list2;
-			Person* person = person->GetRandomPerson();
+			Person *person = GetRandomPerson();
 			list1.Add(person);
-			person = person->GetRandomPerson();
+			person = GetRandomPerson();
 			list1.Add(person);
-			person = person->GetRandomPerson();
+			person = GetRandomPerson();
 			list1.Add(person);
 			cout << "---list 1---" << endl;
 			list1.ShowList(&list);
 
-			person = person->GetRandomPerson();
+			person = GetRandomPerson();
 			list2.Add(person);
-			person = person->GetRandomPerson();
+			person = GetRandomPerson();
 			list2.Add(person);
-			person = person->GetRandomPerson();
+			person = GetRandomPerson();
 			list2.Add(person);
 			cout << "---list 2---" << endl;
 			list2.ShowList(&list);
 
-			cout << "Press any key" << endl;
+			cout << "Press any key" << endl << endl;
 			key = _getch();
-			cout << "Second step: copy person 2(list1) to list2 end" << endl;
+			cout << "Second step: copy person 2(list1) to list2 end" << endl << endl;
 			person = list1.Find(2);
 			list2.Add(person);
 			cout << "---list 1---" << endl;
@@ -154,23 +159,24 @@ int Menu5()
 			cout << "---list 2---" << endl;
 			list2.ShowList(&list);
 
-			cout << "Press any key" << endl;
+			cout << "Press any key" << endl << endl;
 			key = _getch();
-			cout << "Third step: delete person 2 from list1" << endl;
+			cout << "Third step: delete person 2 from list1" << endl << endl;
 			list1.RemoveAt(2);
 			cout << "---list 1---" << endl;
 			list1.ShowList(&list);
 			cout << "---list 2---" << endl;
 			list2.ShowList(&list);
 
-			cout << "Press any key" << endl;
+			cout << "Press any key" << endl << endl;
 			key = _getch();
-			cout << "Last step: Clear list2" << endl;
+			cout << "Last step: Clear list2" << endl << endl;
 			list2.Clear();
 			cout << "---list 1---" << endl;
 			list1.ShowList(&list);
 			cout << "---list 2---" << endl;
 			list2.ShowList(&list);
+			delete person;
 			break;
 		}
 

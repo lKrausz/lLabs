@@ -113,7 +113,6 @@ void TestSubstringFind(char* string, char* substring, char testSubstring[10])
 char* Uppercase(char* string)
 {
 	//TODO: А если входная строка окажется больше 200 символов?
-	//вам наверняка будет лень столько вводить
 	char* newString = new char[200];
 	//TODO: Зачем сначала копировать всю строку, если можно сразу записывать в новую строку приведенные к верхнему кейсу символы? Избавиться от первого цикла
 	//done

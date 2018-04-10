@@ -115,11 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractPerson.cpp" />
+    <ClCompile Include="Adult.cpp" />
+    <ClCompile Include="Child.cpp" />
     <ClCompile Include="ClassPerson.cpp" />
     <ClCompile Include="LaunchTask1.cpp" />
     <ClCompile Include="LaunchTask2.cpp" />
     <ClCompile Include="LaunchTask2Functions.cpp" />
     <ClCompile Include="LaunchTask5.cpp" />
+    <ClCompile Include="LaunchTask6.cpp" />
     <ClCompile Include="PersonList.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="LaunchTask4.cpp" />
@@ -130,6 +134,9 @@
     <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractPerson.h" />
+    <ClInclude Include="Adult.h" />
+    <ClInclude Include="Child.h" />
     <ClInclude Include="ClassPerson.h" />
     <ClInclude Include="Labs.h" />
     <ClInclude Include="LaunchTask1Functions.h" />
