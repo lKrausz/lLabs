@@ -22,6 +22,7 @@ int Menu()
 				<< "4. Task 4;" << endl
 				<< "5. Task 5;" << endl
 				<< "6. Task 6;" << endl
+				<< "7. Task 7;" << endl
 				<< "0. Exit." << endl;
 
 			cin >> key;
@@ -66,6 +67,11 @@ int Menu()
 		case 6:
 
 			LaunchTask6();
+			break;
+
+		case 7:
+
+			LaunchTask7();
 			break;
 
 		case 0:

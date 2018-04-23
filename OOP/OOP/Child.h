@@ -9,9 +9,11 @@ public:
 	AbstractPerson* Father;
 	Child(string name, string surname, int age, int sex) : AbstractPerson()
 	{
-		
+		Mother = nullptr;
+		Father = nullptr;
 	}
 
+	//бесполезная проверка, которая никогда не будет задействована.
 	virtual void SetAge(int age)
 	{
 		if (age > 18)
@@ -26,7 +28,10 @@ public:
 	}
 	void SetSchool(string school)
 	{
-		_school = school;
+		if (school != "0")
+			_school = "None.\0";
+		else
+			_school = school;
 	}
 	string GetSchool()
 	{

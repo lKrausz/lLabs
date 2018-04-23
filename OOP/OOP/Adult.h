@@ -9,7 +9,8 @@ public:
 	AbstractPerson * MarriedOn;
 	Adult(string name, string surname, int age, int sex) : AbstractPerson()
 	{
-		
+		MarriedOn = nullptr;
+		string _workPlace;
 	}
 	~Adult();
 	virtual void SetAge(int age)

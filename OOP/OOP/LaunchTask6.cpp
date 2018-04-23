@@ -46,115 +46,83 @@ int Menu6()
 		system("cls");
 		switch (key)
 		{
-		case 1:
-		{
-			cout << "Enter surname: ";
-			cin >> surname;
-			cout << "Enter name: ";
-			cin >> name;
-			cout << "Enter sex: " << endl
-				<< "0 for female " << endl
-				<< "1 for male: " << endl;
-			cin >> sex;
-			cout << "Enter age: " << endl;
-			cin >> age;
-			if (age < 18)
+			case 1:
 			{
-				string school;
-				int parentsCheck;
-				Child* child = new Child(name, surname, age, sex);
-				cout << "Enter school. If child don't go to school press 0: " << endl;
-				cin >> school;
-				child->SetSchool(school);
-				do
+				cout << "Enter surname: ";
+				cin >> surname;
+				cout << "Enter name: ";
+				cin >> name;
+				cout << "Enter sex: " << endl
+					<< "0 for female " << endl
+					<< "1 for male: " << endl;
+				cin >> sex;
+				cout << "Enter age: " << endl;
+				cin >> age;
+				if (age < 18)
 				{
-					cout << "Do you have parents?" << endl << " 1 - Yes, both, 2 - Only mother, 3 - Only father, 4 - No." << endl;
-					cin >> parentsCheck;
-					switch (parentsCheck)
-					{
-					case 1:
-					{
-						child->Mother = ReadAdult(name, surname, age, sex);
-						child->Father = ReadAdult(name, surname, age, sex);
-					}
-					case 2:
-					{
-						child->Mother = ReadAdult(name, surname, age, sex);
-						child->Father = nullptr;
-					}
-					case 3:
-					{
-						child->Mother = nullptr;
-						child->Father = ReadAdult(name, surname, age, sex);
-					}
-					case 4:
-					{
-						child->Mother = nullptr;
-						child->Father = nullptr;
-					}
-					default:
-					{
-						cout << "Incorrect value. Try again";
-					}
-					}
-				} while (parentsCheck < 1 || parentsCheck > 4);
+					string school;
+					Child* child = new Child(name, surname, age, sex);
+					cout << "Enter school. If child don't go to school press 0: " << endl;
+					cin >> school;
+					child->SetSchool(school);
+					
+				}
+				else
+				{
+					Adult* adult = ReadAdult(name, surname, age, sex);;
+				}
+
+				break;
 			}
-			else
+
+			case 2:
 			{
-				Adult* adult = ReadAdult(name, surname, age, sex);;
+
+				break;
 			}
 
-			break;
-		}
+			case 3:
+			{
 
-		case 2:
-		{
+				break;
+			}
 
-			break;
-		}
+			case 4:
+			{
 
-		case 3:
-		{
+				break;
+			}
 
-			break;
-		}
+			case 5:
+			{
 
-		case 4:
-		{
+				break;
+			}
 
-			break;
-		}
+			case 6:
+			{
+				list.Clear();
+				cout << "List cleared" << endl;
+				break;
+			}
 
-		case 5:
-		{
+			case 7:
+			{
+				cout << "List size: " << list.GetCount() << endl;
+				break;
+			}
 
-			break;
-		}
+			case 8:
+			{
+				break;
+			}
 
-		case 6:
-		{
-			list.Clear();
-			cout << "List cleared" << endl;
-			break;
-		}
-
-		case 7:
-		{
-			cout << "List size: " << list.GetCount() << endl;
-			break;
-		}
-
-		case 8:
-		{
-			break;
-		}
-
-		case 0:
-			cout << " Welcome back.\n";
-			break;
-		default:
-			cout << " Mistake. Try again.\n";
-			break;
+			case 0:
+				cout << " Welcome back.\n";
+				break;
+			default:
+				cout << " Mistake. Try again.\n";
+				break;
 		}
 	} while (key != 0);
 
