@@ -62,9 +62,9 @@ public:
 
 	virtual void SetAge(int age) = 0;
 	virtual int GetAge() = 0;
-	virtual string GetDescription() = 0;
-
+	virtual string GetDescription() = 0; 
 
 };
 
 void ShowPerson(AbstractPerson* person);
+

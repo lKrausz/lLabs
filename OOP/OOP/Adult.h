@@ -4,26 +4,30 @@
 class Adult : public AbstractPerson
 {
 	string _workPlace;
+	AbstractPerson * _marriedOn;
 
 public:
-	AbstractPerson * MarriedOn;
-	Adult(string name, string surname, int age, int sex) : AbstractPerson()
+	
+	Adult(string name, string surname, int age, int sex, string workPlace, AbstractPerson * marriedOn)
 	{
-		MarriedOn = nullptr;
-		string _workPlace;
+		SetName(name);
+		SetSurname(surname);
+		SetAge(age);
+		SetSex(sex);
+		SetMarried(marriedOn);
+		SetWorkPlace(workPlace);
 	}
-	~Adult();
 	virtual void SetAge(int age)
 	{
 		if (age < 18)
 		{
 			age = 18;
 		}
-		this->_age = age;
+		_age = age;
 	}
 	virtual int GetAge()
 	{
-		return this->_age;
+		return _age;
 	}
 	void SetWorkPlace(string workPlace)
 	{
@@ -33,27 +37,42 @@ public:
 	{
 		return _workPlace;
 	}
-	virtual string GetDescription()
+	void SetMarried(AbstractPerson * marrieOn)
 	{
-		string description = _surname + ", " + _name + ", " + to_string(_age) + ", " + to_string(_sex);
+		_marriedOn = marrieOn;
+	}
+	AbstractPerson* GetMarried()
+	{
+		return _marriedOn;
+	}
+	virtual string GetDescription() //override
+	{
+		string description = _surname + ", " + _name + ", " + to_string(_age) + ", ";
+		if (_sex == 0)
+		{
+			description = description + ", " + "famale";
+		}
+		else
+		{
+			description = description + ", " + "male";
+		}
 		if (_workPlace != "0")
 		{
 			description = description + ", " + _workPlace;
 		}
 		else
 		{
-			description = description + ", Unemployee, ";
+			description = description + ", Unemployee";
 		}
-		if (MarriedOn != nullptr)
+		if (_marriedOn != nullptr)
 		{
-			description = description + "married on " + this->MarriedOn->GetName() + ", " + this->MarriedOn->GetSurname() + ".\0";
+			description = description + ", " + "married on " + _marriedOn->GetName() + ", " + _marriedOn->GetSurname() + ".\0";
 		}
 		else
 		{
-			description = description + "single.\0";
+			description = description + ", " + " single.\0";
 		}
 		return description;
 	}
 };
-Adult* ReadAdult(string name, string surname, int age, int sex);
-
+Adult* GetRandomAdalt();

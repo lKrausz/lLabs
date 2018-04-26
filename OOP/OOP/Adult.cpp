@@ -1,48 +1,38 @@
 #include "Adult.h"
 #include <iostream>
 
-Adult* ReadAdult(string name, string surname, int age, int sex)
+
+Adult* GetRandomAdalt()
 {
+	string surname;
+	string name;
 	string workPlace;
-	int marriedCheck;
-	Adult* adult = new Adult(name, surname, age, sex);
-	cout << "Enter workplace or 0 if you don't work" << endl;
-	cin >> workPlace;
-	adult->SetWorkPlace(workPlace);
-	do
+	enum Sex sex;
+	int age = 1 + rand() % 100;
+	int initSex = rand() % 2;
+	switch (initSex)
 	{
-		cout << "Do you married? 1 - Yes, 2 - No" << endl;
-		cin >> marriedCheck;
-		switch (marriedCheck)
-		{
-		case 1:
-		{
-			cout << "Enter surname: ";
-			cin >> surname;
-			cout << "Enter name: ";
-			cin >> name;
-			cout << "Enter sex: " << endl
-				<< "0 for female " << endl
-				<< "1 for male: " << endl;
-			cin >> sex;
-			cout << "Enter age: " << endl;
-			cin >> age;
-			Adult* newAdult = new Adult(name, surname, age, sex);
-			cout << "Enter workplace: " << endl;
-			cin >> workPlace;
-			newAdult->SetWorkPlace(workPlace);
-			adult->MarriedOn = newAdult;
-			newAdult->MarriedOn = adult;
-		}
-		case 2:
-		{
-			adult->MarriedOn = nullptr;
-		}
-		default:
-		{
-			cout << "Incorrect value. Try again." << endl;
-		}
-		}
-	} while (marriedCheck < 1 || marriedCheck > 2);
-	return adult;
+	case 1:
+	{
+		sex = male;
+		const char *maleSurname[] = { "Walter", "Krause", "Zimmer", "Regenherz", "Von-Webber" };
+		surname = maleSurname[rand() % 5];
+		const char *maleName[] = { "Johann", "Walter", "Ludwig", "Karl", "Ulrich" };
+		name = maleName[rand() % 5];
+		break;
+	}
+	case 0:
+	{
+		sex = female;
+		const char *femaleSurname[] = { "Marinelli", "Alfieri", "Bellini", "Ferrario", "Cortese" };
+		surname = femaleSurname[rand() % 5];
+		const char *femaleName[] = { "Annabella", "Ottavia", "Laura", "Alessia", "Chiara" };
+		name = femaleName[rand() % 5];
+		break;
+	}
+	}
+	const char *RandomWorkPlace[] = { "Google", "0", "Microsoft", "Facebook", "Valve" };
+	workPlace = RandomWorkPlace[rand() % 5];
+	Adult* person = new Adult(name, surname, age, sex, workPlace, nullptr);
+	return person;
 }

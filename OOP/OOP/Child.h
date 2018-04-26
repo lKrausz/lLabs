@@ -4,31 +4,35 @@
 class Child : public AbstractPerson
 {
 	string _school;
+	AbstractPerson * _mother;
+	AbstractPerson* _father;
 public:
-	AbstractPerson * Mother;
-	AbstractPerson* Father;
-	Child(string name, string surname, int age, int sex) : AbstractPerson()
+
+	Child(string name, string surname, int age, int sex, string school, AbstractPerson * Mother,AbstractPerson* Father)
 	{
-		Mother = nullptr;
-		Father = nullptr;
+		SetName(name);
+		SetSurname(surname);
+		SetAge(age);
+		SetSex(sex);
+		SetSchool(school);
+		_mother = Mother;
+		_father = Father;
 	}
 
-	//бесполезная проверка, которая никогда не будет задействована.
 	virtual void SetAge(int age)
 	{
 		if (age > 18)
-		{
-			age = 17;
-		} 
-		this->_age = age;
+			_age = 15;
+		else
+			_age = age;
 	}
 	virtual int GetAge()
 	{
-		return this->_age;
+		return _age;
 	}
 	void SetSchool(string school)
 	{
-		if (school != "0")
+		if (school == "0")
 			_school = "None.\0";
 		else
 			_school = school;
@@ -37,26 +41,36 @@ public:
 	{
 		return _school;
 	}
-	virtual string GetDescription()
+	virtual string GetDescription() //override
 	{
-		string description = _surname + ", " + _name + ", " + to_string(_age) + ", " + to_string(_sex);
+		string description = _surname + ", " + _name + ", " + to_string(_age);
+		if (_sex == 0)
+		{
+			description = description + ", " + "famale";
+		}
+		else
+		{
+			description = description + ", " + "male";
+		}
 		if (_school != "0")
 		{
 			description = description + ", " + _school;
 		}
-		if (Mother != nullptr)
+		if (_mother != nullptr)
 		{
-			description = description + "Mother:  " + this->Mother->GetName() + ", " + this->Mother->GetSurname() + ".\0";
+			description = description + " Mother:  " + this->_mother->GetName() + ", " + this->_mother->GetSurname() + ".\0";
 		}
-		if (Father != nullptr)
+		if (_father != nullptr)
 		{
-			description = description + "Father: " + this->Father->GetName() + ", " + this->Father->GetSurname() + ".\0";
+			description = description + " Father: " + this->_father->GetName() + ", " + this->_father->GetSurname() + ".\0";
 		}
-		if(Father != nullptr && Mother != nullptr)
+		if(_father == nullptr && _mother == nullptr)
 		{
 			description = description + "Parents are not specified.\0";
 		}
 		return description;
 	}
 };
+
+Child* GetRandomChild();
 

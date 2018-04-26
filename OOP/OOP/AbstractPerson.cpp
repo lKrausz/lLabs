@@ -3,7 +3,6 @@
 #include <iomanip> // for satw 
 
 using namespace std;
-class IncorrectSexValue {};
 
 void ShowPerson(AbstractPerson* person)
 {
@@ -20,3 +19,4 @@ void ShowPerson(AbstractPerson* person)
 	}
 	cout << setw(3) << person->GetAge() << endl;
 }
+
