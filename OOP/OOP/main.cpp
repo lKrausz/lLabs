@@ -2,7 +2,13 @@
 #include "Labs.h"
 #include <iostream>
 #include <ctime>
-
+//TODO: Удалить из проекта 1-4 лабораторные работы.
+//TODO: Вместо папок Lab 5 создать папки Person, List, Demo
+//TODO: В папку Person перенести person, sex, adult, child
+//TODO: В папку List перенести List и personList
+//TODO: В папку Demo перенести все файлы LaunchTask и demo
+//TODO: В корне проекта должен остаться только main
+//TODO: Подпапки в заголовочных файлах и файлах исходного кода ДОЛЖНЫ СОВПАДАТЬ!
 
 using namespace std;
 

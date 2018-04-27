@@ -1,14 +1,15 @@
 #pragma once
-#include "UniversalList.h"
+//TODO: структурно и синтаксически реализация списка поменялась с шестой лабораторной. Этот код писал другой человек
+#include "UniversalList.h" //TODO: файл подключает сам себя?
 #include "ClassPerson.h"
 
 using namespace std;
 
 template <typename T>
-class UniversalList
+class UniversalList //TODO: убрать слово Universal из названия
 {
 	template <typename TItem>
-	class UniversalListItem
+	class UniversalListItem //TODO: убрать слово Universal из названия
 	{
 		TItem _value;
 
@@ -36,7 +37,7 @@ class UniversalList
 
 public:
 	UniversalList() {};
-
+	//TODO: здесь именуется как data, в Insert именуется как element - сделать единообразно
 	void Add(T data)
 	{
 		UniversalListItem<T>* temp = new UniversalListItem<T>(data);
@@ -68,10 +69,11 @@ public:
 			i++;
 			if (temp == nullptr)
 			{
+				//TODO: Лучше в Insert перенести реализацию из Add, а в Add сделать вызов функции Insert
 				Add(element);
 				return;
 			}
-		};
+		};//TODO: не надо двух пустых строк между блоками кода в функции
 
 
 		if (temp == _head)
@@ -93,7 +95,7 @@ public:
 			_tail->prev = newNode;
 			_tail->next = nullptr;
 			return;
-		}
+		} //TODO: Какое удивительное совпадение... У Начына здесь тоже две пустые строки... И блоки кода с условиями в том же порядке... Готовься к вопросам
 
 
 		if (temp != nullptr)
@@ -197,7 +199,7 @@ public:
 		delete deletedElement;
 	};
 
-	void ShowList()
+	void ShowList() //TODO: Просто Show. Не надо добавлять название класса в имя методов а то вызов превращается в list.ShowList - тавтология
 	{
 		UniversalListItem<T>* current = _head;
 		if (_head == nullptr)
@@ -254,6 +256,7 @@ public:
 	}
 };
 
+//TODO: если оператор перегружается для класса Person, то этот код должен быть в классе Person, а не в списке
 ostream& operator<<(ostream& os, Person* person)
 {
 	os << person->GetName() << ", " << person->GetSurname() << ", " << person->GetAge() << ", " << person->GetSex();
