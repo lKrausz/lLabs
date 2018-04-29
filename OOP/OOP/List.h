@@ -1,35 +1,246 @@
-п»ї#pragma once
-#include "Person.h"
-//TODO: Р¤Р°Р№Р» РёРјРµРµС‚ СЃРјС‹СЃР» РїРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ РІ List - С‡С‚РѕР±С‹ РЅР°Р·РІР°РЅРёРµ РѕС‚СЂР°Р¶Р°Р»Рѕ РµРіРѕ СЃРѕРґРµСЂР¶Р°РЅРёРµ
-//done
-//TODO: РџРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ Node РЅР° ListNode - СЃС‚СЂСѓРєС‚СѓСЂР° РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РґР»СЏ СЃРїРёСЃРєРѕРІ, СЌС‚Рѕ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РѕС‚СЂР°Р¶РµРЅРѕ РІ РЅР°Р·РІР°РЅРёРё
-//done
-struct ListNode
+#pragma once
+#include "BasePerson.h"
+
+using namespace std;
+
+template <typename T>
+class List //TODO: убрать слово Universal из названия//done
 {
-	//TODO: Node РґРѕР»Р¶РµРЅ С…СЂР°РЅРёС‚СЊ РѕР±СЉРµРєС‚ РїРѕ СѓРєР°Р·Р°С‚РµР»СЋ, Р° РЅРµ РїРѕ Р·РЅР°С‡РµРЅРёСЋ.
-	// РРЅР°С‡Рµ РјС‹ РЅРµ РјРѕР¶РµРј РїРѕРјРµСЃС‚РёС‚СЊ РІ СЃРїРёСЃРѕРє РѕР±СЉРµРєС‚С‹, РєРѕС‚РѕСЂС‹Рµ Р±С‹Р»Рё СЃРѕР·РґР°РЅС‹ РІ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё
-	Person data;
-	ListNode* next = NULL;
-	ListNode* prev = NULL;
+	template <typename TItem>
+	class ListItem //TODO: убрать слово Universal из названия//done
+	{
+		TItem _value;
+
+	public:
+
+		ListItem<TItem>* next = nullptr;
+		ListItem<TItem>* prev = nullptr;
+
+		ListItem() {};
+
+		ListItem(TItem data)
+		{
+			_value = data;
+		};
+
+		TItem GetValue()
+		{
+			return _value;
+		};
+	};
+
+	ListItem<T>* _head = nullptr;
+	ListItem<T>* _tail = nullptr;
+	int _count = 0;
+
+public:
+	List() {};
+
+	//Добавление элемента в конец
+	void Add(T data)
+	{
+		this->Insert(data, _count);
+	};
+
+	//Вставка элемента
+	void Insert(T data, int index)
+	{
+		if (index < 0 || index > _count) return;
+
+		_count++;
+
+		ListItem<T>* newNode = new ListItem<T>(data);
+		newNode->next = NULL;
+		newNode->prev = NULL;
+		
+		if (_head == NULL)
+		{
+			_head = newNode;
+			_tail = newNode;
+			return;
+		}
+		
+		ListItem<T>* current = _head;
+		for (int i = 1; i < index && current->next != NULL; i++)
+			current = current->next;
+		if (index == 0)
+		{
+			//вставляем новый элемент на первое место
+			newNode->next = _head;
+			_head->prev = newNode;
+			_head = newNode;
+		}
+		else
+		{
+			//вставляем новый элемент на непервое место
+			if (current->next != NULL)
+				current->next->prev = newNode;
+			newNode->next = current->next;
+			current->next = newNode;
+			newNode->prev = current;
+			current = newNode;
+		}
+	}
+
+	T Find(int index)
+	{
+		if (index < 0)
+		{
+			return nullptr;
+		}
+
+		ListItem<T>* current = _head;
+
+		for (int i = 0; i < index; i++)
+		{
+			if (current->next)
+			{
+				current = current->next;
+			}
+		}
+		return current->GetData();
+	};
+
+	int IndexOf(T data)
+	{
+		ListItem<T>* current = _head;
+		int index = 0;
+		while (current)
+		{
+			if (current->GetValue() == data)
+			{
+				return index;
+			}
+			index++;
+			current = current->next;
+		}
+		return -1;
+	};
+
+	int GetCount()
+	{
+		return _count;
+	};
+
+	void Remove(T data)
+	{
+		int index = IndexOf(data);
+		RemoveAt(index);
+	};
+
+	void RemoveAt(int index)
+	{
+		_count--;
+		if (_head == NULL || index >_count)
+			return;
+		int i = 0;
+		ListItem<T>* deletedElement = _head;
+
+		while (i != index && deletedElement != NULL)
+		{
+			++i;
+			deletedElement = deletedElement->next;
+		}
+		if (deletedElement == NULL)
+			return;
+		//начало списка
+		if (deletedElement->prev == NULL)
+		{
+			_head = NULL;
+			if (deletedElement->next != NULL)
+			{
+				_head = deletedElement->next;
+				_head->prev = NULL;
+			}
+		}
+		//конец списка
+		if (deletedElement->next == NULL)
+		{
+			_tail = NULL;
+			if (deletedElement->prev != NULL)
+			{
+				_tail = deletedElement->prev;
+				_tail->next = NULL;
+			}
+		}
+		//середина списка
+		if (deletedElement->next != NULL && deletedElement->prev != NULL)
+		{
+			deletedElement->next->prev = deletedElement->prev;
+			deletedElement->prev->next = deletedElement->next;
+		}
+		delete deletedElement;
+	};
+
+	void Show() //TODO: Просто Show. Не надо добавлять название класса в имя методов а то вызов превращается в list.ShowList - тавтология//done
+	{
+		ListItem<T>* current = _head;
+		if (_head == nullptr)
+			return;
+		int i = 0;
+		cout << "List:" << endl;
+		if (current)
+		{
+			while (current)
+			{
+				cout << ++i << ":\t" << current->GetValue() << endl;
+				current = current->next;
+			}
+		}
+		else
+		{
+			cout << "List empty" << endl;
+		}
+		cout << endl;
+	};
+
+	void Clear()
+	{
+		_count = 0;
+		ListItem<T>* current = _head;
+		if (current)
+		{
+			while (current->next)
+			{
+				current = current->next;
+				delete current->prev;
+			}
+			delete current;
+
+			_head = NULL;
+			_tail = NULL;
+		}
+	};
+
+	~List()
+	{
+		Clear();
+	};
+
+	friend ostream & operator<<(ostream& os, List<T>* l)
+	{
+		ListItem<T>* temp = l->_head;
+		while (temp)
+		{
+			os << temp->GetValue() << ' ';
+			temp = temp->next;
+		}
+		return os;
+	}
 };
 
-struct List
+//TODO: если оператор перегружается для класса Person, то этот код должен быть в классе Person, а не в списке//оно так не воркает
+ostream& operator<<(ostream& os, BasePerson* person)
 {
-	ListNode* head = NULL;
-	ListNode* tail = NULL;
-};
+	os << person->GetDescription();
+	return os;
+}
 
-//Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р°
-void InsertElement(List* list, Person data, int index);
-//РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
-void DeleteElement(List* list, int index);
-//Р’С‹РІРѕРґ СЃРїРёСЃРєР° РЅР° СЌРєСЂР°РЅ
-void ShowList(List* list);
-//Р Р°Р·РјРµСЂ СЃРїРёСЃРєР°
-int GetListLength(List* list);
-//РџРѕР»СѓС‡РµРЅРёРµ Р°РґСЂРµСЃР° person
-//TODO: РџРѕР»СѓС‡РµРЅРёРµ РЅРµ Р°РґСЂРµСЃР° РѕР±СЉРµРєС‚Р°, Р° СЃР°РјРѕРіРѕ РѕР±СЉРµРєС‚Р°. РџРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ
-//done
-Person* GetPerson(List* list, int index);
-//РћС‚С‡РёСЃС‚РєР° РІСЃРµРіРѕ СЃРїРёСЃРєР°
-void Clear(List* list);
+ostream& operator<<(ostream& os, double* d)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		os << d[i] << ' ';
+	}
+	return os;
+}

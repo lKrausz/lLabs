@@ -1,16 +1,26 @@
-#pragma once
 #include "PersonList.h"
-#include <iomanip> // satw
+#include "BasePerson.h"
 #include <iostream>
 
+PersonList::PersonList()
+{
+	PersonListItem* _head;
+	PersonListItem* _tail;
+	int _count;
+}
 
-void PersonList::Add(Person* person)
+PersonList::~PersonList()
+{
+	Clear();
+}
+
+void PersonList::Add(BasePerson* person)
 {
 	_count++;
 	PersonListItem* newPerson = new PersonListItem();
-	newPerson->data = person;
-	newPerson->next = NULL;
-	newPerson->prev = NULL;
+	newPerson->Data = person;
+	newPerson->Next = NULL;
+	newPerson->Prev = NULL;
 
 	int i = 0;
 	PersonListItem* node = _head;
@@ -21,19 +31,16 @@ void PersonList::Add(Person* person)
 		_tail = newPerson;
 		return;
 	}
+	//TODO: зачем в цикле искать последний элемент, если в классе хранится указатель _tail?//done
 
-	while (node->next != nullptr)
-		node = node->next;
-
-	node->next = newPerson;
-	newPerson->prev = node;
+	_tail->Next = newPerson;
+	newPerson->Prev = _tail;
 	_tail = newPerson;
 };
 
-Person* PersonList::Find(int index)
-{
-	if (index > _count) return nullptr;
 
+BasePerson* PersonList::Find(int index)
+{
 	PersonListItem* current = _head;
 	for (int i = 0; i < _count; i++)
 	{
@@ -41,37 +48,36 @@ Person* PersonList::Find(int index)
 		{
 			if (i == index)
 			{
-				return current->data;
+				return current->Data;
 			}
-			current = current->next;	
+			current = current->Next;
 		}
 		else return nullptr;
 	}
 	return nullptr;
-};
-
-int PersonList::IndexOf(Person* person)
+}; 
+  
+int PersonList::IndexOf(BasePerson* person)
 {
 	PersonListItem* current = _head;
-	int index = 0;
-	while (current != nullptr && index <= _count)
+	//TODO: заменить на for. While ухудшают читаемость, и лучше их использовать реже//done
+	for (int index = 0; index <= _count; index++) //while (current != nullptr && index <= _count)
 	{
-		if (current->data->GetName() == person->GetName())
-			if (current->data->GetSurname() == person->GetName())
-				if (current->data->GetAge() == person->GetAge())
-					if (current->data->GetSex() == person->GetSex())
-						return index;
-		current = current->next;
-		index++;
+		if (current != nullptr)
+		{
+			//TODO: что за ёлочка? Избавиться от вложенности условий. Есть логические сложения и умножения условий//done
+			if (current->Data == person) return index;
+			current = current->Next;
+		}
 	}
 	return -1;
-};
-
-void PersonList::Remove(Person* person)
+}; 
+   
+void PersonList::Remove(BasePerson* person)
 {
 	int index = IndexOf(person);
 	RemoveAt(index);
-};
+}; 
 
 void PersonList::RemoveAt(int index)
 {
@@ -83,49 +89,49 @@ void PersonList::RemoveAt(int index)
 	while (i != index && node != NULL)
 	{
 		++i;
-		node = node->next;
+		node = node->Next;
 	}
 	if (node == NULL)
 		return;
-	//начало списка
-	if (node->prev == NULL)
+	//Начало списка
+	if (node->Prev == NULL)
 	{
 		_head = NULL;
-		if (node->next != NULL)
+		if (node->Next != NULL)
 		{
-			_head = node->next;
-			_head->prev = NULL;
+			_head = node->Next;
+			_head->Prev = NULL;
 		}
 	}
-	//конец списка
-	if (node->next == NULL)
+	//Конец списка
+	if (node->Next == NULL)
 	{
 		_tail = NULL;
-		if (node->prev != NULL)
+		if (node->Prev != NULL)
 		{
-			_tail = node->prev;
-			_tail->next = NULL;
+			_tail = node->Prev;
+			_tail->Next = NULL;
 		}
 	}
-	//середина списка
-	if (node->next != NULL && node->prev != NULL)
+	//Середина списка
+	if (node->Next != NULL && node->Prev != NULL)
 	{
-		node->next->prev = node->prev;
-		node->prev->next = node->next;
+		node->Next->Prev = node->Prev;
+		node->Prev->Next = node->Next;
 	}
 	delete node;
 };
 
 void PersonList::Clear()
-{
+{ 
 	_count = 0;
 	PersonListItem* current = _head;
 	if (current)
 	{
-		while (current->next)
+		while (current->Next)
 		{
-			current = current->next;
-			delete current->prev;
+			current = current->Next;
+			delete current->Prev;
 		}
 		delete current;
 
@@ -135,29 +141,22 @@ void PersonList::Clear()
 };
 
 int PersonList::GetCount()
-{
+{ 
 	return _count;
-};
+}; 
 
-void PersonList::ShowList(PersonList* list)
-{
+void PersonList::Show(PersonList* list)
+{ 
 	PersonListItem* current = _head;
 	if (_head == nullptr)
 		return;
 	int i = 0;
 	cout << "List:" << endl;
-	cout << setw(10) << left
-		<< setw(3) << "#"
-		<< setw(20) << "Surname"
-		<< setw(15) << "Name"
-		<< setw(8) << "Sex"
-		<< setw(3) << "Age"
-		<< endl;
 	while (current != nullptr)
 	{
 		cout << i++ << ".";
-		ShowPerson(current->data);
-		current = current->next;
+		cout << current->Data->GetDescription() << endl;
+		current = current->Next;
 	}
 	cout << endl;
 };

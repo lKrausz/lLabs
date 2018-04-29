@@ -1,52 +1,46 @@
-п»ї#pragma once
-#include "ClassPerson.h"
+#pragma once
+#include "BasePerson.h"
+//TODO: ВСЮ РЕАЛИЗАЦИЮ ВЫНЕСТИ В CPP-ФАЙЛ//done
+//TODO: Что за буква A в начале? Никаких сокращений! Слово Abstract не нужно//done
+//TODO: PersonListItem должен быть вложенный в List класс под модификатором private - чтобы никто, кроме списка, не мог создавать его экземпляры//done
 
-class PersonListItem
-{
-public:
-	Person* data;
-	PersonListItem* next = NULL;
-	PersonListItem* prev = NULL;
-};
 
+//TODO: Что за буква A в начале? Никаких сокращений! Слово Abstract не нужно//done
+//TODO: Имя класса не должно отличаться от имени файла - иначе возникает путаница при просмотре проекта//done
 class PersonList
 {
-	PersonListItem* _head; 
+private:
+	class PersonListItem
+	{
+
+	public:
+		BasePerson * Data; //TODO: Неправильное именование поля//done?
+		PersonListItem* Next = nullptr; //TODO: Неправильное именование поля//done?
+		PersonListItem* Prev = nullptr; //TODO: Неправильное именование поля//done?
+	};
+	//TODO: модификатор private надо указывать явно - повышает читаемость//done
+	PersonListItem* _head;
 	PersonListItem* _tail;
-	//РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРєРµ
-	int _count; 
+	//Количество элементов в списке //TODO: комментарии к коду пишутся с заглавной буквы//done
+	int _count;
 
 public:
-	PersonList()
-	{
-		PersonListItem* _head;
-		PersonListItem* _tail;
-		int _count;
-	}
-	~PersonList()
-	{
-		while (_head != NULL)
-		{
-			PersonListItem *next = _head->next;
-			delete _head->data;
-			delete _head;
-			_head = next;
-		}
-	}
-	//РґРѕР±Р°РІРёС‚СЊ С‡РµР»РѕРІРµРєР° РІ СЃРїРёСЃРѕРє
-	void Add(Person* person); 
-	//РЅР°Р№С‚Рё С‡РµР»РѕРІРµРєР° РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ
-	Person* Find(int index); 
-	//РІРµСЂРЅСѓС‚СЊ РёРЅРґРµРєСЃ С‡РµР»РѕРІРµРєР°, РµСЃР»Рё РѕРЅ РµСЃС‚СЊ РІ СЃРїРёСЃРєРµ
-	int IndexOf(Person* person); 
-	//СѓРґР°Р»РёС‚СЊ С‡РµР»РѕРІРµРєР° РёР· СЃРїРёСЃРєР°
-	void Remove(Person* person); 
-	//СѓРґР°Р»РёС‚СЊ С‡РµР»РѕРІРµРєР° РёР· СЃРїРёСЃРєР° РїРѕ РёРЅРґРµРєСЃСѓ
-	void RemoveAt(int index); 
-	//РѕС‡РёСЃС‚РёС‚СЊ СЃРїРёСЃРѕРє
+	PersonList();
+	~PersonList();
+	//Добавить человека в список
+	void Add(BasePerson* person);
+	//Найти человека по указанному индексу
+	BasePerson* Find(int index);
+	//Вернуть индекс человека, если он есть в списке
+	int IndexOf(BasePerson* person);
+	//Удалить человека из списка
+	void Remove(BasePerson* person);
+	//Удалить человека из списка по индексу
+	void RemoveAt(int index);
+	//Очистить список
 	void Clear();
-	//РїРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
+	//Получить количество элементов списка
 	int GetCount();
-	//РІС‹РІРµСЃС‚Рё СЃРїРёСЃРѕРє РЅР° СЌРєСЂР°РЅ
-	void ShowList(PersonList* list);
+	//Вывести список на экран
+	void Show(PersonList* list);
 };

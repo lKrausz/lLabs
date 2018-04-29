@@ -1,5 +1,6 @@
 #include "Child.h"
 #include "Adult.h"
+#include <iostream>
 
 
 Child* GetRandomChild()
@@ -33,6 +34,76 @@ Child* GetRandomChild()
 	}
 	const char *RandomSchool[] = { "Liceum #1", "State school #13", "State school #13", "State school #2", "0"};
 	school = RandomSchool[rand() % 5];
-	Child* person = new Child(name, surname, age, sex, school, GetRandomAdalt(), GetRandomAdalt());
+	Child* person = new Child(name, surname, age, sex, school, GetRandomAdult(), GetRandomAdult());
 	return person;
+}
+
+//TODO:  перечисление вместо int//done
+Child::Child(string name, string surname, int age, Sex sex, string school, BasePerson * Mother, BasePerson* Father)
+{
+	SetName(name);
+	SetSurname(surname);
+	SetAge(age);
+	SetSex(sex); //TODO:  перечисление вместо int//done
+	SetSchool(school);
+	_mother = Mother;
+	_father = Father;
+}
+
+void Child::SetAge(int age)
+{
+	try
+	{
+		if (age > 18)
+			//TODO: должно быть исключение, потому что кто-то пытается создать взрослого-малолетку//done
+			throw age;
+		else
+			_age = age;
+	}
+	catch(int age)
+	{
+		cout << "Age more then 18." << endl;
+	}
+}
+
+int Child::GetAge()
+{
+	return _age;
+}
+
+void Child::SetSchool(string school)
+{
+		_school = school;
+}
+
+string Child::GetSchool()
+{
+	return _school;
+}
+
+string Child::GetDescription()
+{
+	string description = _surname + ", " + _name + ", " + to_string(_age);
+	if (_sex == female) //TODO: зачем делать перечисление, если всё равно работаешь с int?//done
+	{
+		description = description + ", " + "female";
+	}
+	else
+	{
+		description = description + ", " + "male";
+	}
+	description = description + ", " + _school;
+	if (_mother != nullptr)
+	{
+		description = description + " Mother:  " + this->_mother->GetName() + ", " + this->_mother->GetSurname() + ".\0";
+	}
+	if (_father != nullptr)
+	{
+		description = description + " Father: " + this->_father->GetName() + ", " + this->_father->GetSurname() + ".\0";
+	}
+	if (_father == nullptr && _mother == nullptr)
+	{
+		description = description + "Parents are not specified.\0";
+	}
+	return description;
 }

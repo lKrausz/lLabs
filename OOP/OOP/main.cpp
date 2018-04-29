@@ -2,13 +2,13 @@
 #include "Labs.h"
 #include <iostream>
 #include <ctime>
-//TODO: Удалить из проекта 1-4 лабораторные работы.
-//TODO: Вместо папок Lab 5 создать папки Person, List, Demo
-//TODO: В папку Person перенести person, sex, adult, child
-//TODO: В папку List перенести List и personList
-//TODO: В папку Demo перенести все файлы LaunchTask и demo
-//TODO: В корне проекта должен остаться только main
-//TODO: Подпапки в заголовочных файлах и файлах исходного кода ДОЛЖНЫ СОВПАДАТЬ!
+//TODO: Удалить из проекта 1-4 лабораторные работы.//done
+//TODO: Вместо папок Lab 5 создать папки Person, List, Demo//done
+//TODO: В папку Person перенести person, sex, adult, child//done
+//TODO: В папку List перенести List и personList//done
+//TODO: В папку Demo перенести все файлы LaunchTask и demo//done
+//TODO: В корне проекта должен остаться только main//done
+//TODO: Подпапки в заголовочных файлах и файлах исходного кода ДОЛЖНЫ СОВПАДАТЬ!//done
 
 using namespace std;
 
@@ -22,13 +22,9 @@ int Menu()
 		while (true)
 		{
 			cout << "\t Choose laboratory work:" << endl << endl
-				<< "1. Task 1;" << endl
-				<< "2. Task 2;" << endl
-				<< "3. Task 3;" << endl
-				<< "4. Task 4;" << endl
-				<< "5. Task 5;" << endl
-				<< "6. Task 6;" << endl
-				<< "7. Task 7;" << endl
+				
+				<< "1. Task 6;" << endl
+				<< "2. Task 7;" << endl
 				<< "0. Exit." << endl;
 
 			cin >> key;
@@ -45,37 +41,13 @@ int Menu()
 		system("cls");
 		switch (key)
 		{
+		
 		case 1:
-
-			LaunchTask1();
-			break;
-
-		case 2:
-
-			LaunchTask2();
-			break;
-
-		case 3:
-
-			LaunchTask3();
-			break;
-
-		case 4:
-
-			LaunchTask4();
-			break;
-
-		case 5:
-
-			LaunchTask5();
-			break;
-
-		case 6:
 
 			LaunchTask6();
 			break;
 
-		case 7:
+		case 2:
 
 			LaunchTask7();
 			break;

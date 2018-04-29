@@ -115,40 +115,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AbstractPerson.cpp" />
+    <ClCompile Include="BasePerson.cpp" />
     <ClCompile Include="Adult.cpp" />
     <ClCompile Include="Child.cpp" />
-    <ClCompile Include="ClassPerson.cpp" />
-    <ClCompile Include="LaunchTask1.cpp" />
-    <ClCompile Include="LaunchTask2.cpp" />
-    <ClCompile Include="LaunchTask2Functions.cpp" />
-    <ClCompile Include="LaunchTask5.cpp" />
     <ClCompile Include="LaunchTask6.cpp" />
     <ClCompile Include="LaunchTask7.cpp" />
     <ClCompile Include="PersonList.cpp" />
-    <ClCompile Include="String.cpp" />
-    <ClCompile Include="LaunchTask4.cpp" />
-    <ClCompile Include="List.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="LaunchTask3.cpp" />
-    <ClCompile Include="Stack.cpp" />
-    <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractPerson.h" />
-    <ClInclude Include="AbstractPersonList.h" />
+    <ClInclude Include="BasePerson.h" />
+    <ClInclude Include="PersonList.h" />
     <ClInclude Include="Adult.h" />
     <ClInclude Include="Child.h" />
-    <ClInclude Include="ClassPerson.h" />
     <ClInclude Include="Labs.h" />
-    <ClInclude Include="LaunchTask1Functions.h" />
-    <ClInclude Include="LaunchTask2Functions.h" />
-    <ClInclude Include="PersonList.h" />
-    <ClInclude Include="String.h" />
     <ClInclude Include="List.h" />
-    <ClInclude Include="Stack.h" />
-    <ClInclude Include="Person.h" />
-    <ClInclude Include="UniversalList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

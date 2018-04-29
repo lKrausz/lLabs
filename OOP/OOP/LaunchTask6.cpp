@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Labs.h"
-#include "AbstractPerson.h"
-#include "AbstractPersonList.h"
+#include "BasePerson.h"
+#include "PersonList.h"
 #include "Child.h"
 #include "Adult.h"
 
@@ -12,11 +12,12 @@ using namespace std;
 int Menu6()
 {
 	int key;
-	APersonList* list = new APersonList();
+	PersonList* list = new PersonList();
 	string surname;
 	string name;
 	int age = 0;
-	int sex = 0;
+	int sexCheck = 0;
+	Sex sex;
 	do
 	{
 		while (true)
@@ -52,14 +53,28 @@ int Menu6()
 				cout << "Enter sex: " << endl
 					<< "0 for female " << endl
 					<< "1 for male: " << endl;
-				cin >> sex;
+				cin >> sexCheck;
+				switch (sexCheck)
+				{
+				case 1:
+				{
+					sex = male;
+					break;
+				}
+				case 0:
+				{
+					sex = female;
+					break;
+				}
+				//default: break;
+				}
 				cout << "Enter age: " << endl;
 				cin >> age;
 				if (age < 18)
 				{
 					string school;
 					Child* child = new Child(name, surname, age, sex, school, nullptr, nullptr);
-					cout << "Enter school. If child don't go to school press 0: " << endl;
+					cout << "Enter school or 'None', if child don't have to go to school: " << endl;
 					cin >> school;
 					child->SetSchool(school);
 					list->Add(child);
@@ -68,23 +83,37 @@ int Menu6()
 				{
 					string workPlace;
 					Adult* adult = new Adult(name, surname, age, sex, workPlace, nullptr);
-					cout << "Enter workplace or 0 if you don't work" << endl;
+					cout << "Enter workplace or 'Unemployee' if you don't work" << endl;
 					cin >> workPlace;
 					adult->SetWorkPlace(workPlace);
 					list->Add(adult);
 				}
 
-			list->ShowNewList(list);
+			list->Show(list);
 				break;
 			}
 
 			case 2:
 			{
-				list->ShowNewList(list);
+				list->Show(list);
 				int index;
-				cout << "Enter index:" << endl;
-				cin >> index;
-				AbstractPerson* person = list->Find(index);
+				//TODO: в таких случаях надо выкидывать исключение, а не возвращать пустой указатель//done
+				//TODO: добавить проверку на отрицательное значение//done
+				try
+				{
+					cout << "Enter index:" << endl;
+					cin >> index;
+					if (index < 0 || index > list->GetCount()) throw index;
+				}
+				catch(int)
+				{
+					if (index < 0)
+						cout << "Incorrect value." << endl;
+					else 
+						cout << "Index more then list size." << endl;
+				}
+
+				BasePerson* person = list->Find(index);
 				if (person == nullptr)
 				{
 					cout << "Person not found." << endl;
@@ -103,7 +132,7 @@ int Menu6()
 				{
 				case 1:
 				{
-					Adult* adult = GetRandomAdalt();
+					Adult* adult = GetRandomAdult();
 					list->Add(adult);
 					break;
 				}
@@ -114,20 +143,20 @@ int Menu6()
 					break;
 				}
 				}
-				list->ShowNewList(list);
+				list->Show(list);
 				break;
 			}
 
 			case 4:
 			{
-				list->NewClear();
+				list->Clear();
 				cout << "List cleared" << endl;
 				break;
 			}
 
 			case 5:
 			{
-				cout << "List size: " << list->GetNewCount() << endl;
+				cout << "List size: " << list->GetCount() << endl;
 				break;
 			}
 
