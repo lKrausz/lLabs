@@ -31,7 +31,6 @@ void PersonList::Add(BasePerson* person)
 		_tail = newPerson;
 		return;
 	}
-	//TODO: зачем в цикле искать последний элемент, если в классе хранится указатель _tail?//done
 
 	_tail->Next = newPerson;
 	newPerson->Prev = _tail;
@@ -60,12 +59,10 @@ BasePerson* PersonList::Find(int index)
 int PersonList::IndexOf(BasePerson* person)
 {
 	PersonListItem* current = _head;
-	//TODO: заменить на for. While ухудшают читаемость, и лучше их использовать реже//done
-	for (int index = 0; index <= _count; index++) //while (current != nullptr && index <= _count)
+	for (int index = 0; index <= _count; index++)
 	{
-		if (current != nullptr)
+		if (current != nullptr) //TODO: Здесь лучше сделать инверсию условия - if (current == nullptr) break; или сразу if (current == nullptr) return -1;
 		{
-			//TODO: что за ёлочка? Избавиться от вложенности условий. Есть логические сложения и умножения условий//done
 			if (current->Data == person) return index;
 			current = current->Next;
 		}

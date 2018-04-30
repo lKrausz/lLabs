@@ -7,7 +7,7 @@ using namespace std;
 string BasePerson::GetDescription()
 {
 	string description = _surname + ", " + _name + ", " + to_string(_age) + ", ";
-	if (_sex == female) //TODO: зачем делать перечисление, если всё равно работаешь с int?//done?
+	if (_sex == female)
 	{
 		description = description + ", " + "famale";
 	}
@@ -37,7 +37,6 @@ void BasePerson::SetSurname(string surname)
 	_surname = surname;
 }
 
-//TODO: входной тип данных должен быть Sex, а не int. Иначе зря создавали перечисление//done
 void BasePerson::SetSex(Sex sex)
 {
 	_sex = sex;
@@ -53,12 +52,10 @@ string BasePerson::GetSurname()
 	return _surname;
 }
 
-//TODO: должен возращаться тип данных Sex, а не int//done
 Sex BasePerson::GetSex()
 {
 	return _sex;
 }
-
 
 BasePerson* GetRandomPerson()
 {

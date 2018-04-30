@@ -1,11 +1,7 @@
 #pragma once
 #include <string>
-//TODO: ВСЮ РЕАЛИЗАЦИЮ В CPP-ФАЙЛ//done
 
-using namespace std;//TODO: должна быть только одна пустая строка между неймспейсом и описанием класса//done
-
-//TODO: 1) Абстрактные классы обозначаются словом Base, а не Abstract//done
-//TODO: 2) Этот класс не должен быть абстрактным//done
+using namespace std;
 
 enum Sex
 {
@@ -35,11 +31,11 @@ public:
 	//Получение значения поля Sex
 	Sex GetSex();
 	//Установка значения для возраста
-	virtual void SetAge(int age); //TODO: почему у человека не может быть реализации возраста?//done
+	virtual void SetAge(int age);
 	//Получение значения поля Age
-	virtual int GetAge(); //TODO: почему у человека не может быть реализации возраста?//done
+	virtual int GetAge();
 	//Данные о человеке
-	virtual string GetDescription(); //TODO: почему у человека не можеть быть реализации описания? ведь это по существу функция ShowPerson()//done
+	virtual string GetDescription();
 
 };
 

@@ -37,13 +37,12 @@ Adult* GetRandomAdult()
 	return person;
 }
 
-//TODO:  перечисление вместо int//done
 Adult::Adult(string name, string surname, int age, Sex sex, string workPlace, BasePerson * marriedOn)
 {
 	SetName(name);
 	SetSurname(surname);
 	SetAge(age);
-	SetSex(sex);  //TODO:  перечисление вместо int//done
+	SetSex(sex); 
 	SetMarried(marriedOn);
 	SetWorkPlace(workPlace);
 }
@@ -53,7 +52,7 @@ void Adult::SetAge(int age)
 	try
 	{
 		if (age < 18)
-			//TODO: должно быть исключение, потому что кто-то пытаетс€ создать взрослого-малолетку//done
+			//TODO: тоже самое, что и в Child
 			throw age;
 		else
 			_age = age;

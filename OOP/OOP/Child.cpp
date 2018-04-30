@@ -38,7 +38,6 @@ Child* GetRandomChild()
 	return person;
 }
 
-//TODO:  перечисление вместо int//done
 Child::Child(string name, string surname, int age, Sex sex, string school, BasePerson * Mother, BasePerson* Father)
 {
 	SetName(name);
@@ -55,12 +54,11 @@ void Child::SetAge(int age)
 	try
 	{
 		if (age > 18)
-			//TODO: должно быть исключение, потому что кто-то пытается создать взрослого-малолетку//done
-			throw age;
+			throw age; //TODO: лучше всё таки кидать экзепляры класса exception, а не int...
 		else
 			_age = age;
 	}
-	catch(int age)
+	catch(int age) //TODO: Нет! Обработка исключения делается снаружи. Функция выбрасывает исключение, а код снаружи ловит исключение.
 	{
 		cout << "Age more then 18." << endl;
 	}
@@ -84,7 +82,7 @@ string Child::GetSchool()
 string Child::GetDescription()
 {
 	string description = _surname + ", " + _name + ", " + to_string(_age);
-	if (_sex == female) //TODO: зачем делать перечисление, если всё равно работаешь с int?//done
+	if (_sex == female)
 	{
 		description = description + ", " + "female";
 	}

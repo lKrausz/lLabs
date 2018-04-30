@@ -1,12 +1,6 @@
 #pragma once
 #include "BasePerson.h"
-//TODO: ВСЮ РЕАЛИЗАЦИЮ ВЫНЕСТИ В CPP-ФАЙЛ//done
-//TODO: Что за буква A в начале? Никаких сокращений! Слово Abstract не нужно//done
-//TODO: PersonListItem должен быть вложенный в List класс под модификатором private - чтобы никто, кроме списка, не мог создавать его экземпляры//done
 
-
-//TODO: Что за буква A в начале? Никаких сокращений! Слово Abstract не нужно//done
-//TODO: Имя класса не должно отличаться от имени файла - иначе возникает путаница при просмотре проекта//done
 class PersonList
 {
 private:
@@ -14,14 +8,13 @@ private:
 	{
 
 	public:
-		BasePerson * Data; //TODO: Неправильное именование поля//done?
-		PersonListItem* Next = nullptr; //TODO: Неправильное именование поля//done?
-		PersonListItem* Prev = nullptr; //TODO: Неправильное именование поля//done?
+		BasePerson * Data;
+		PersonListItem* Next = nullptr;
+		PersonListItem* Prev = nullptr;
 	};
-	//TODO: модификатор private надо указывать явно - повышает читаемость//done
+
 	PersonListItem* _head;
 	PersonListItem* _tail;
-	//Количество элементов в списке //TODO: комментарии к коду пишутся с заглавной буквы//done
 	int _count;
 
 public:
